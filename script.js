@@ -41,3 +41,14 @@ const glow=document.querySelector(".cursor-glow");
 window.addEventListener("pointermove",e=>{glow.style.left=e.clientX+"px";glow.style.top=e.clientY+"px"});
 document.querySelectorAll(".nav nav a").forEach(a=>a.addEventListener("click",()=>{document.querySelectorAll(".nav nav a").forEach(x=>x.classList.remove("active"));a.classList.add("active")}));
 function sendMessage(e){e.preventDefault();alert("Thanks! This demo form is ready for a backend/email service. Add Formspree, EmailJS or your own backend to receive messages.");}
+document.addEventListener("mousemove", function (e) {
+    document.documentElement.style.setProperty(
+        "--mouse-x",
+        e.clientX + "px"
+    );
+
+    document.documentElement.style.setProperty(
+        "--mouse-y",
+        e.clientY + "px"
+    );
+});

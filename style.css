@@ -1285,3 +1285,123 @@ footer p {
         padding: 20px;
     }
 }
+
+
+/* Soft light that follows the top of each card */
+.project-card::before,
+.skill-card::before,
+.achievement-card::before,
+.certificate-card::before,
+.section-card::before,
+.education-card::before {
+    content: "";
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 180px;
+    height: 100px;
+
+    background: #6685ff;
+    filter: blur(70px);
+
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Glow appears when hovering */
+.project-card:hover::before,
+.skill-card:hover::before,
+.achievement-card:hover::before,
+.certificate-card:hover::before,
+.section-card:hover::before,
+.education-card:hover::before {
+    opacity: 0.18;
+}
+
+/* Slight glass shine */
+.project-card:hover,
+.skill-card:hover,
+.achievement-card:hover,
+.certificate-card:hover {
+    background: rgba(20, 25, 35, 0.95);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+.hero h1 span {
+    text-shadow: 0 0 25px rgba(100, 130, 255, 0.25);
+}
+.profile-circle {
+    animation: profileFloat 4s ease-in-out infinite;
+}
+
+@keyframes profileFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+body {
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(75, 100, 220, 0.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 70%,
+            rgba(120, 80, 220, 0.06),
+            transparent 30%
+        ),
+        #0b0e13;
+}
+/* =========================================
+   CURSOR FOLLOWING LIGHT
+========================================= */
+
+body::before {
+    content: "";
+    position: fixed;
+
+    width: 350px;
+    height: 350px;
+
+    left: var(--mouse-x, -200px);
+    top: var(--mouse-y, -200px);
+
+    transform: translate(-50%, -50%);
+
+    background: radial-gradient(
+        circle,
+        rgba(100, 130, 255, 0.12) 0%,
+        rgba(100, 130, 255, 0.05) 30%,
+        transparent 70%
+    );
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    transition:
+        left 0.08s ease-out,
+        top 0.08s ease-out;
+}
+/* Education spacing */
+
+.education-card + .education-card {
+    margin-top: 16px;
+}
+
+.education-result {
+    margin-top: 10px;
+    color: #7f8999;
+    font-size: 12px;
+}
+
+.education-result strong {
+    color: #7894ff;
+    font-size: 13px;
+}
