@@ -5,7 +5,7 @@ const siteConfig = {
   email: "Yuva0051@gamail.com",
   phone: "+91 9342038458",
   terminal: "https://leetcode.com/settings/profile/",
-  resume: "yuvarajan_resume.pdf",
+  resume: "Yuvarajan_J_Resume.pdf",
   passwordProject: "https://github.com/Wolf-assualt/password-generator"
 };
 
