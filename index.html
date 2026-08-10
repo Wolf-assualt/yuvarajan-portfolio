@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Yuvarajan J — ECE undergraduate, aspiring cybersecurity professional and problem solver.">
+<title>Yuvarajan J | Developer Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="cursor-glow"></div>
+
+<header class="nav">
+  <a class="brand" href="#home"><span>YJ</span> Yuvarajan J <i></i></a>
+  <button class="hamburger" aria-label="Menu">☰</button>
+  <nav>
+    <a class="active" href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a>
+    <a href="#projects">Projects</a><a href="#education">Education</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a>
+  </nav>
+  <a class="cv" id="resumeLink" href="resume.pdf" download>↓ Download CV</a>
+</header>
+
+<main>
+<section id="home" class="hero wrap">
+  <div class="hero-copy reveal">
+    <p class="cyan">HELLO, I'M</p>
+    <h1>YUVARAJAN <b>J</b></h1>
+    <h3>ECE UNDERGRADUATE <span>|</span> ASPIRING CYBERSECURITY PROFESSIONAL</h3>
+    <p class="lead">Electronics and Communication Engineering student passionate about Cybersecurity, Ethical Hacking, and building smart solutions that make a real-world impact.</p>
+    <div class="actions"><a class="btn primary" href="#projects">Explore My Work <span>→</span></a><a class="btn" href="#contact">Contact Me <span>◌</span></a></div>
+    <div class="socials"><a id="githubLink" href="#" target="_blank" rel="noopener">GitHub</a><a id="linkedinLink" href="#" target="_blank" rel="noopener">in</a><a id="instagramLink" href="#" target="_blank" rel="noopener">◎</a><a id="emailLink" href="#">✉</a><a id="terminalLink" href="#" target="_blank" rel="noopener">>_</a></div>
+  </div>
+  <div class="hero-visual reveal">
+    <div class="portrait-placeholder"><div class="ring"></div><img class="profile-photo" src="profile.jpg" alt="Yuvarajan J"></div>
+    <div class="terminal glass"><strong>› Terminal</strong><code><em>yuva@portfolio:~$</em> whoami<br><span>Passionate Learner</span><br>Problem Solver<br><span>Future Cybersecurity Expert</span><br><em>yuva@portfolio:~$</em> _</code></div>
+    <div class="learning glass"><strong>Currently Learning</strong><ul><li>Web Security</li><li>Penetration Testing</li><li>Linux & Networking</li><li>Cloud Security</li></ul></div>
+    <div class="open glass"><strong>Open to</strong><ul><li>Internships</li><li>Collaborations</li><li>Opportunities</li></ul></div>
+  </div>
+</section>
+
+<section id="about" class="panel wrap reveal">
+  <div class="about-copy">
+    <p class="section-title">♟ ABOUT ME</p>
+    <p>I am an Electronics and Communication Engineering student at Sri Sairam College of Engineering, Bengaluru (VTU). I love exploring technology, building projects, and solving real-world problems.</p>
+    <p>My goal is to become a skilled Cybersecurity Professional and contribute to creating a safer digital world.</p>
+    <pre><code><span>const</span> yuva = {
+  education: <b>"ECE Undergraduate"</b>,
+  focus: <b>"Cybersecurity"</b>,
+  tools: [<b>"Python", "Linux", "Git", "Nmap", "Burp Suite"</b>],
+  motto: <b>"Learn • Build • Secure"</b>
+};</code></pre>
+  </div>
+  <div class="facts">
+    <div><b>🎓</b><strong>3rd Year ECE</strong><small>Sri Sairam College of Engineering, Bengaluru</small></div>
+    <div><b>📍</b><strong>Bengaluru, India</strong><small>Born & brought up in India</small></div>
+    <div><b>🎯</b><strong>Career Goal</strong><small>Cybersecurity Expert & Problem Solver</small></div>
+    <div><b>⚡</b><strong>Fun Fact</strong><small>I love gaming, travel and exploring tech!</small></div>
+  </div>
+</section>
+
+<section id="skills" class="split wrap">
+  <div class="box reveal">
+    <p class="section-title">&lt;/&gt; SKILLS</p>
+    <div class="tabs"><button class="selected">Technical Skills</button><button>Tools & Platforms</button></div>
+    <div class="skill"><span>🐍 Python <b>90%</b></span><i><u style="width:90%"></u></i></div>
+    <div class="skill"><span>🐧 Linux <b>85%</b></span><i><u style="width:85%"></u></i></div>
+    <div class="skill"><span>▤ HTML <b>95%</b></span><i><u style="width:95%"></u></i></div>
+    <div class="skill"><span>🛡 Cybersecurity <b>80%</b></span><i><u style="width:80%"></u></i></div>
+    <div class="skill"><span>⚡ JavaScript <b>75%</b></span><i><u style="width:75%"></u></i></div>
+    <div class="skill"><span>🌐 Networking <b>75%</b></span><i><u style="width:75%"></u></i></div>
+    <div class="skill"><span>🗄 SQL <b>70%</b></span><i><u style="width:70%"></u></i></div>
+    <div class="skill"><span>◉ Git & GitHub <b>90%</b></span><i><u style="width:90%"></u></i></div>
+  </div>
+  <div id="projects" class="box reveal">
+    <div class="project-head"><p class="section-title">▱ PROJECTS</p><a href="https://github.com/Wolf-assualt" target="_blank">View All Projects</a></div>
+    <div class="cards">
+      <article class="project"><div class="project-img lock">🔒</div><small>PYTHON • SECURITY</small><h3>Random Password Generator</h3><p>A secure password generator built with Python. Generates strong random passwords with custom length and complexity.</p><div class="tags"><span>Python</span><span>Tkinter</span><span>Security</span></div><a id="passwordProjectLink" href="#" target="_blank" rel="noopener">⌘ View Code</a></article>
+      <article class="project"><div class="project-img bin">♻</div><small>IOT • ARDUINO</small><h3>Smart IoT Waste Bin</h3><p>IoT based smart bin that detects waste level and sends real-time alerts. Built using Arduino, IoT sensors and Blynk.</p><div class="tags"><span>IoT</span><span>Arduino</span><span>Blynk</span></div><a href="#">⌘ View Code</a></article>
+      <article class="project"><div class="project-img aqua">AQUAURBAN<br>NEXUS</div><small>AI • IOT • SOLVATHON</small><h3>AquaUrban Nexus</h3><p>AI-IoT integrated solution for waste-to-resource partnership and coastal resilience.</p><div class="tags"><span>AI</span><span>IoT</span><span>Sustainability</span></div><a href="#">↗ View Details</a></article>
+    </div>
+  </div>
+</section>
+
+<section class="lower wrap">
+  <div id="education" class="box reveal"><p class="section-title">🎓 EDUCATION</p>
+    <div class="timeline"><article><time>2022 — Present</time><div><b>B.E. in Electronics and Communication Engineering</b><p>Sri Sairam College of Engineering, Bengaluru<br>Visvesvaraya Technological University (VTU)</p><label>CGPA: 6.11*</label></div></article>
+    <article><time>2020 — 2022</time><div><b>Higher Secondary (12th)</b><p>State Board</p><label>86%</label></div></article>
+    <article><time>2020</time><div><b>SSLC (10th)</b><p>State Board</p><label>90%</label></div></article></div>
+  </div>
+  <div id="certifications" class="box reveal"><p class="section-title">🏅 CERTIFICATIONS</p>
+    <ul class="certs"><li>Python Programming — Infosys Springboard 🏅</li><li>Introduction to Cybersecurity — Cisco 🏅</li><li>Linux Essentials — Cisco Networking Academy 🏅</li><li>Git & GitHub — Coursera 🏅</li><li>Ethical Hacking Basics — TryHackMe 🏅</li></ul><button class="outline" onclick="alert('Add certificate links here.')">View All Certificates</button>
+  </div>
+  <div class="box reveal"><p class="section-title">🏆 ACHIEVEMENTS</p><ul class="ach"><li>🚀 <b>Participated in Solvathon 2024</b><small>Smart India Hackathon-style competition</small></li><li>◈ <b>IEEE Student Member</b><small>IEEE Bangalore Section</small></li><li>🏆 <b>AICTE Activity Points Earned</b><small>For co-curricular & extra-curricular activities</small></li><li>🧠 <b>Active Learner</b><small>Constantly upgrading skills and building real-world projects.</small></li></ul></div>
+</section>
+
+<section id="contact" class="contact wrap reveal">
+  <div><p class="section-title">➤ CONTACT ME</p><p>I'm always open to discussing new projects, creative ideas or opportunities.</p><p>✉ <a id="contactEmailText" href="#">YOUR_EMAIL@example.com</a></p><p>📞 <a id="phoneLink" href="#">+91 XXXXX XXXXX</a></p><p>📍 Bengaluru, India</p></div>
+  <form onsubmit="sendMessage(event)"><input required placeholder="Your Name"><input required type="email" placeholder="Your Email"><input placeholder="Subject"><textarea required placeholder="Message"></textarea><button class="btn primary">➤ Send Message</button></form>
+  <div class="connect"><h2>LET'S CONNECT</h2><p>Find me on other platforms</p><div class="socials"><a id="githubLink2" href="#" target="_blank" rel="noopener">GitHub</a><a id="linkedinLink2" href="#" target="_blank" rel="noopener">in</a><a id="instagramLink2" href="#" target="_blank" rel="noopener">◎</a><a id="terminalLink2" href="#" target="_blank" rel="noopener">>_</a></div><pre><code>while(learning === true) {
+  keepBuilding();
+  keepGrowing();
+}</code></pre></div>
+</section>
+</main>
+<footer><span>© 2026 Yuvarajan J. All rights reserved.</span><a href="#home">⌃</a><span>Built with ♥ and lots of ☕</span></footer>
+<script src="script.js"></script>
+</body>
+</html>
