@@ -1405,3 +1405,254 @@ body::before {
     color: #7894ff;
     font-size: 13px;
 }
+/* =========================================================
+   PROFESSIONAL POLISH — ADD AT THE VERY END
+   ========================================================= */
+
+/* Smooth overall experience */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Professional selection effect */
+::selection {
+    background: rgba(0, 255, 200, 0.25);
+    color: #fff;
+}
+
+/* Subtle scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00ffc8, #0077ff);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00ffc8;
+}
+
+/* Make sections feel more polished */
+section {
+    position: relative;
+}
+
+/* Subtle section glow */
+section::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(0, 255, 200, 0.06),
+        transparent 70%
+    );
+    top: 20%;
+    left: -150px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Professional hover effect for cards */
+.card,
+.project-card,
+.skill-card,
+.service-card,
+.experience-card,
+.education-card {
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.card:hover,
+.project-card:hover,
+.skill-card:hover,
+.service-card:hover,
+.experience-card:hover,
+.education-card:hover {
+    transform: translateY(-7px);
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.35),
+        0 0 25px rgba(0, 255, 200, 0.08);
+}
+
+/* Professional button animation */
+button,
+.btn,
+.button,
+a.btn {
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+button:hover,
+.btn:hover,
+.button:hover,
+a.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 255, 200, 0.18);
+}
+
+/* Social icons */
+.social-icons a,
+.social-links a {
+    transition:
+        transform 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.social-icons a:hover,
+.social-links a:hover {
+    transform: translateY(-4px) scale(1.08);
+    color: #00ffc8;
+}
+
+/* Image polish */
+img {
+    transition:
+        transform 0.4s ease,
+        filter 0.4s ease;
+}
+
+img:hover {
+    filter: brightness(1.05);
+}
+
+/* Professional heading highlight */
+h1,
+h2,
+h3 {
+    text-wrap: balance;
+}
+
+/* Gradient text where your existing design uses accent colors */
+.gradient-text {
+    background: linear-gradient(
+        90deg,
+        #00ffc8,
+        #00aaff,
+        #8b5cf6
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Subtle glowing accent */
+.accent-glow {
+    text-shadow:
+        0 0 10px rgba(0, 255, 200, 0.35),
+        0 0 30px rgba(0, 255, 200, 0.12);
+}
+
+/* Modern glass effect if your existing elements use these classes */
+.glass,
+.glass-card {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+/* Navigation polish */
+nav a {
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: #00ffc8;
+    box-shadow: 0 0 10px rgba(0, 255, 200, 0.5);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after,
+nav a.active::after {
+    width: 70%;
+}
+
+/* Floating ambient lights */
+body::after {
+    content: "";
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    right: -180px;
+    bottom: -180px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(0, 170, 255, 0.08),
+        transparent 70%
+    );
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Reveal animation */
+@keyframes professionalFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section {
+    animation: professionalFadeUp 0.8s ease both;
+}
+
+/* Reduce animation for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Mobile polish */
+@media (max-width: 768px) {
+    section::before {
+        width: 180px;
+        height: 180px;
+        left: -90px;
+    }
+
+    .card:hover,
+    .project-card:hover,
+    .skill-card:hover,
+    .service-card:hover,
+    .experience-card:hover,
+    .education-card:hover {
+        transform: translateY(-3px);
+    }
+}

@@ -4,7 +4,7 @@ const siteConfig = {
   instagram: "https://www.instagram.com/_yuva._.rajan__/?__pwa=1#",
   email: "Yuva0051@gamail.com",
   phone: "+91 9342038458",
-  terminal: "https://leetcode.com/settings/profile/",
+  terminal: "https://leetcode.com/u/OrqZrMg9nt/",
   resume: "Yuvarajan_J_Resume.pdf",
   passwordProject: "https://github.com/Wolf-assualt/password-generator"
 };
