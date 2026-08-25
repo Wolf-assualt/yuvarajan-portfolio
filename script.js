@@ -530,3 +530,231 @@ document.addEventListener(
         );
     }
 );
+
+/* =========================================================
+   GITHUB CONTRIBUTION TOTAL
+   Automatically gets ALL GitHub contributions
+========================================================= */
+
+const githubContributionCount =
+    document.getElementById(
+        "githubContributionCount"
+    );
+
+const githubSection =
+    document.querySelector(
+        "#github"
+    );
+
+let githubCountAnimated = false;
+
+
+/*
+    GitHub username
+*/
+
+const githubUsername =
+    "Wolf-assualt";
+
+
+/*
+    Get all contribution data
+*/
+
+async function getGithubContributionTotal() {
+
+    if (!githubContributionCount) {
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            `https://github-contributions-api.jogruber.de/v4/${githubUsername}?y=all`
+        );
+
+        if (!response.ok) {
+            throw new Error(
+                "Unable to fetch GitHub contributions"
+            );
+        }
+
+        const data =
+            await response.json();
+
+
+        /*
+            Add every year's total
+            to get lifetime contributions
+        */
+
+        let total = 0;
+
+        Object.values(data.total || {})
+            .forEach(yearTotal => {
+
+                if (
+                    typeof yearTotal === "number"
+                ) {
+
+                    total += yearTotal;
+
+                }
+
+            });
+
+
+        /*
+            Start animation
+        */
+
+        animateGithubCount(total);
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "GitHub contribution error:",
+            error
+        );
+
+        githubContributionCount.textContent =
+            "—";
+
+    }
+
+}
+
+
+/*
+    Number counting animation
+*/
+
+function animateGithubCount(
+    targetNumber
+) {
+
+    if (
+        githubCountAnimated ||
+        !githubContributionCount
+    ) {
+        return;
+    }
+
+    githubCountAnimated = true;
+
+
+    let currentNumber = 0;
+
+    const duration = 2200;
+
+    const startTime =
+        performance.now();
+
+
+    function updateCounter(
+        currentTime
+    ) {
+
+        const elapsed =
+            currentTime - startTime;
+
+        const progress =
+            Math.min(
+                elapsed / duration,
+                1
+            );
+
+
+        /*
+            Smooth ease-out effect
+        */
+
+        const easedProgress =
+            1 -
+            Math.pow(
+                1 - progress,
+                4
+            );
+
+
+        currentNumber =
+            Math.floor(
+                easedProgress *
+                targetNumber
+            );
+
+
+        githubContributionCount.textContent =
+            currentNumber.toLocaleString();
+
+
+        if (
+            progress < 1
+        ) {
+
+            requestAnimationFrame(
+                updateCounter
+            );
+
+        }
+
+        else {
+
+            githubContributionCount.textContent =
+                targetNumber.toLocaleString();
+
+        }
+
+    }
+
+
+    requestAnimationFrame(
+        updateCounter
+    );
+
+}
+
+
+/*
+    Start only when GitHub
+    section enters viewport
+*/
+
+if (
+    githubSection
+) {
+
+    const githubObserver =
+        new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            getGithubContributionTotal();
+
+                            githubObserver.disconnect();
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.25
+            }
+        );
+
+
+    githubObserver.observe(
+        githubSection
+    );
+
+}
