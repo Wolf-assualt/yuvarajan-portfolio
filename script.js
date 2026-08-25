@@ -315,3 +315,130 @@ document.addEventListener(
 
   }
 );
+
+/* =========================================================
+   ANIMATED TYPING EFFECT
+========================================================= */
+
+const typingText = document.getElementById("typingText");
+
+const typingWords = [
+    "Web Experiences",
+    "AI Applications",
+    "Developer Tools",
+    "Practical Solutions"
+];
+
+let typingWordIndex = 0;
+let typingCharIndex = 0;
+
+let isDeleting = false;
+
+const typingSpeed = 90;
+const deletingSpeed = 50;
+const pauseAfterTyping = 1800;
+const pauseAfterDeleting = 500;
+
+
+function runTypingAnimation() {
+
+    if (!typingText) return;
+
+    const currentWord =
+        typingWords[typingWordIndex];
+
+
+    /* TYPE */
+
+    if (!isDeleting) {
+
+        typingText.textContent =
+            currentWord.substring(
+                0,
+                typingCharIndex + 1
+            );
+
+        typingCharIndex++;
+
+
+        /* Finished typing */
+
+        if (
+            typingCharIndex ===
+            currentWord.length
+        ) {
+
+            isDeleting = true;
+
+            setTimeout(
+                runTypingAnimation,
+                pauseAfterTyping
+            );
+
+            return;
+        }
+
+        setTimeout(
+            runTypingAnimation,
+            typingSpeed
+        );
+
+        return;
+    }
+
+
+    /* DELETE */
+
+    typingText.textContent =
+        currentWord.substring(
+            0,
+            typingCharIndex - 1
+        );
+
+    typingCharIndex--;
+
+
+    /* Finished deleting */
+
+    if (typingCharIndex === 0) {
+
+        isDeleting = false;
+
+        typingWordIndex++;
+
+        if (
+            typingWordIndex >=
+            typingWords.length
+        ) {
+            typingWordIndex = 0;
+        }
+
+        setTimeout(
+            runTypingAnimation,
+            pauseAfterDeleting
+        );
+
+        return;
+    }
+
+
+    setTimeout(
+        runTypingAnimation,
+        deletingSpeed
+    );
+}
+
+
+/* Start animation */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        setTimeout(
+            runTypingAnimation,
+            500
+        );
+
+    }
+);
