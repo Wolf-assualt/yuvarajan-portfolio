@@ -320,7 +320,8 @@ document.addEventListener(
    ANIMATED TYPING EFFECT
 ========================================================= */
 
-const typingText = document.getElementById("typingText");
+const typingText =
+    document.getElementById("typingText");
 
 const typingWords = [
     "Web Experiences",
@@ -331,114 +332,6 @@ const typingWords = [
 
 let typingWordIndex = 0;
 let typingCharIndex = 0;
-
-let isDeleting = false;
-
-const typingSpeed = 90;
-const deletingSpeed = 50;
-const pauseAfterTyping = 1800;
-const pauseAfterDeleting = 500;
-
-
-function runTypingAnimation() {
-
-    if (!typingText) return;
-
-    const currentWord =
-        typingWords[typingWordIndex];
-
-
-    /* TYPE */
-
-    if (!isDeleting) {
-
-        typingText.textContent =
-            currentWord.substring(
-                0,
-                typingCharIndex + 1
-            );
-
-        typingCharIndex++;
-
-
-        /* Finished typing */
-
-        if (
-            typingCharIndex ===
-            currentWord.length
-        ) {
-
-            isDeleting = true;
-
-            setTimeout(
-                runTypingAnimation,
-                pauseAfterTyping
-            );
-
-            return;
-        }
-
-        setTimeout(
-            runTypingAnimation,
-            typingSpeed
-        );
-
-        return;
-    }
-
-
-    /* DELETE */
-
-    typingText.textContent =
-        currentWord.substring(
-            0,
-            typingCharIndex - 1
-        );
-
-    typingCharIndex--;
-
-
-    /* Finished deleting */
-
-    if (typingCharIndex === 0) {
-
-        isDeleting = false;
-
-        typingWordIndex++;
-
-        if (
-            typingWordIndex >=
-            typingWords.length
-        ) {
-            typingWordIndex = 0;
-        }
-
-        setTimeout(
-            runTypingAnimation,
-            pauseAfterDeleting
-        );
-
-        return;
-    }
-
-
-    setTimeout(
-        runTypingAnimation,
-        deletingSpeed
-    );
-}
-
-const typingText = document.getElementById("typingText");
-
-const typingWords = [
-    "Web Experiences",
-    "AI Applications",
-    "Developer Tools",
-    "Digital Solutions"
-];
-
-let typingWordIndex = 0;
-let typingCharIndex = 0;
 let isDeleting = false;
 
 const typingSpeed = 90;
@@ -521,243 +414,17 @@ function runTypingAnimation() {
     );
 }
 
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
-        setTimeout(
-            runTypingAnimation,
-            500
-        );
-    }
-);
+if (typingText) {
+
+    setTimeout(
+        runTypingAnimation,
+        500
+    );
+
+}
+
 
 /* =========================================================
-   GITHUB CONTRIBUTION TOTAL
-   Automatically gets ALL GitHub contributions
-========================================================= */
-
-const githubContributionCount =
-    document.getElementById(
-        "githubContributionCount"
-    );
-
-const githubSection =
-    document.querySelector(
-        "#github"
-    );
-
-let githubCountAnimated = false;
-
-
-/*
-    GitHub username
-*/
-
-const githubUsername =
-    "Wolf-assualt";
-
-
-/*
-    Get all contribution data
-*/
-
-async function getGithubContributionTotal() {
-
-    if (!githubContributionCount) {
-        return;
-    }
-
-    try {
-
-        const response = await fetch(
-            `https://github-contributions-api.jogruber.de/v4/${githubUsername}?y=all`
-        );
-
-        if (!response.ok) {
-            throw new Error(
-                "Unable to fetch GitHub contributions"
-            );
-        }
-
-        const data =
-            await response.json();
-
-
-        /*
-            Add every year's total
-            to get lifetime contributions
-        */
-
-        let total = 0;
-
-        Object.values(data.total || {})
-            .forEach(yearTotal => {
-
-                if (
-                    typeof yearTotal === "number"
-                ) {
-
-                    total += yearTotal;
-
-                }
-
-            });
-
-
-        /*
-            Start animation
-        */
-
-        animateGithubCount(total);
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "GitHub contribution error:",
-            error
-        );
-
-        githubContributionCount.textContent =
-            "—";
-
-    }
-
-}
-
-
-/*
-    Number counting animation
-*/
-
-function animateGithubCount(
-    targetNumber
-) {
-
-    if (
-        githubCountAnimated ||
-        !githubContributionCount
-    ) {
-        return;
-    }
-
-    githubCountAnimated = true;
-
-
-    let currentNumber = 0;
-
-    const duration = 2200;
-
-    const startTime =
-        performance.now();
-
-
-    function updateCounter(
-        currentTime
-    ) {
-
-        const elapsed =
-            currentTime - startTime;
-
-        const progress =
-            Math.min(
-                elapsed / duration,
-                1
-            );
-
-
-        /*
-            Smooth ease-out effect
-        */
-
-        const easedProgress =
-            1 -
-            Math.pow(
-                1 - progress,
-                4
-            );
-
-
-        currentNumber =
-            Math.floor(
-                easedProgress *
-                targetNumber
-            );
-
-
-        githubContributionCount.textContent =
-            currentNumber.toLocaleString();
-
-
-        if (
-            progress < 1
-        ) {
-
-            requestAnimationFrame(
-                updateCounter
-            );
-
-        }
-
-        else {
-
-            githubContributionCount.textContent =
-                targetNumber.toLocaleString();
-
-        }
-
-    }
-
-
-    requestAnimationFrame(
-        updateCounter
-    );
-
-}
-
-
-/*
-    Start only when GitHub
-    section enters viewport
-*/
-
-if (
-    githubSection
-) {
-
-    const githubObserver =
-        new IntersectionObserver(
-            (entries) => {
-
-                entries.forEach(
-                    entry => {
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            getGithubContributionTotal();
-
-                            githubObserver.disconnect();
-
-                        }
-
-                    }
-                );
-
-            },
-            {
-                threshold: 0.25
-            }
-        );
-
-
-    githubObserver.observe(
-        githubSection
-    );
-
-  /* =========================================================
    GITHUB CONTRIBUTION COUNTER
    USER: Wolf-assualt
 ========================================================= */
@@ -774,31 +441,21 @@ if (
             "github"
         );
 
-
-    /* =====================================================
-       CHECK ELEMENTS
-    ===================================================== */
-
-    if (!counter || !githubSection) {
-
-        console.warn(
-            "GitHub contribution elements not found."
-        );
-
+    if (
+        !counter ||
+        !githubSection
+    ) {
         return;
     }
-
 
     const username =
         "Wolf-assualt";
 
-
-    let animationStarted =
-        false;
+    let animationStarted = false;
 
 
     /* =====================================================
-       FETCH GITHUB CONTRIBUTIONS
+       LOAD GITHUB DATA
     ===================================================== */
 
     async function loadGithubContributions() {
@@ -809,14 +466,11 @@ if (
                 "Loading GitHub contributions..."
             );
 
-
             const apiURL =
                 `https://github-contributions-api.jogruber.de/v4/${username}?y=all`;
 
-
             const response =
                 await fetch(apiURL);
-
 
             if (!response.ok) {
 
@@ -826,75 +480,59 @@ if (
 
             }
 
-
             const data =
                 await response.json();
 
-
             console.log(
-                "GitHub API response:",
+                "GitHub contribution data:",
                 data
             );
 
 
-            /* =================================================
-               GET TOTAL DATA
-            ================================================= */
+            /*
+             * The API returns:
+             *
+             * data.total
+             *
+             * containing yearly totals.
+             */
 
-            const yearlyTotals =
-                data.total;
-
+            let total = 0;
 
             if (
-                !yearlyTotals ||
-                typeof yearlyTotals !== "object"
+                data.total &&
+                typeof data.total === "object"
             ) {
 
-                throw new Error(
-                    "Contribution total data not found."
+                Object.values(
+                    data.total
+                ).forEach(
+                    value => {
+
+                        const number =
+                            Number(value);
+
+                        if (
+                            Number.isFinite(
+                                number
+                            )
+                        ) {
+
+                            total += number;
+
+                        }
+
+                    }
                 );
 
             }
 
 
-            let total =
-                0;
-
-
-            /* =================================================
-               ADD ALL YEARS
-            ================================================= */
-
-            Object.keys(yearlyTotals).forEach(
-                function (year) {
-
-                    const value =
-                        Number(
-                            yearlyTotals[year]
-                        );
-
-
-                    if (
-                        Number.isFinite(value)
-                    ) {
-
-                        total += value;
-
-                    }
-
-                }
-            );
-
-
             console.log(
-                "TOTAL CONTRIBUTIONS:",
+                "Total GitHub contributions:",
                 total
             );
 
-
-            /* =================================================
-               IF TOTAL IS VALID
-            ================================================= */
 
             if (total > 0) {
 
@@ -902,17 +540,14 @@ if (
                     total
                 );
 
-            }
-
-            else {
+            } else {
 
                 console.warn(
-                    "GitHub returned 0 contributions."
+                    "GitHub contribution total is 0."
                 );
 
                 counter.textContent =
                     "0";
-
             }
 
         }
@@ -920,10 +555,9 @@ if (
         catch (error) {
 
             console.error(
-                "GitHub contribution loading failed:",
+                "GitHub contribution error:",
                 error
             );
-
 
             counter.textContent =
                 "—";
@@ -934,7 +568,7 @@ if (
 
 
     /* =====================================================
-       ANIMATED NUMBER
+       ANIMATE NUMBER
     ===================================================== */
 
     function animateGithubCounter(
@@ -945,18 +579,13 @@ if (
             return;
         }
 
-
-        animationStarted =
-            true;
-
+        animationStarted = true;
 
         const duration =
             2200;
 
-
         const startTime =
             performance.now();
-
 
         function updateCounter(
             currentTime
@@ -966,7 +595,6 @@ if (
                 currentTime -
                 startTime;
 
-
             const progress =
                 Math.min(
                     elapsed /
@@ -974,29 +602,23 @@ if (
                     1
                 );
 
-
-            /* Smooth ease-out */
-
-            const easedProgress =
+            const eased =
                 1 -
                 Math.pow(
                     1 - progress,
                     4
                 );
 
-
-            const currentNumber =
+            const current =
                 Math.floor(
-                    easedProgress *
+                    eased *
                     target
                 );
 
-
             counter.textContent =
-                currentNumber.toLocaleString(
+                current.toLocaleString(
                     "en-IN"
                 );
-
 
             if (
                 progress < 1
@@ -1006,9 +628,7 @@ if (
                     updateCounter
                 );
 
-            }
-
-            else {
+            } else {
 
                 counter.textContent =
                     target.toLocaleString(
@@ -1019,7 +639,6 @@ if (
 
         }
 
-
         requestAnimationFrame(
             updateCounter
         );
@@ -1028,31 +647,21 @@ if (
 
 
     /* =====================================================
-       WAIT UNTIL GITHUB SECTION IS VISIBLE
+       START WHEN GITHUB SECTION IS VISIBLE
     ===================================================== */
 
     const githubObserver =
         new IntersectionObserver(
-            function (entries) {
+            entries => {
 
                 entries.forEach(
-                    function (entry) {
+                    entry => {
 
                         if (
                             entry.isIntersecting
                         ) {
 
-                            console.log(
-                                "GitHub section visible."
-                            );
-
-
                             loadGithubContributions();
-
-
-                            /*
-                                Only run once.
-                            */
 
                             githubObserver.disconnect();
 
@@ -1067,11 +676,8 @@ if (
             }
         );
 
-
     githubObserver.observe(
         githubSection
     );
 
 })();
-
-}
