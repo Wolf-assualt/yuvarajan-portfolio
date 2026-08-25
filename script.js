@@ -428,17 +428,105 @@ function runTypingAnimation() {
     );
 }
 
+const typingText = document.getElementById("typingText");
 
-/* Start animation */
+const typingWords = [
+    "Web Experiences",
+    "AI Applications",
+    "Developer Tools",
+    "Digital Solutions"
+];
+
+let typingWordIndex = 0;
+let typingCharIndex = 0;
+let isDeleting = false;
+
+const typingSpeed = 90;
+const deletingSpeed = 50;
+const pauseAfterTyping = 1800;
+const pauseAfterDeleting = 500;
+
+function runTypingAnimation() {
+
+    if (!typingText) return;
+
+    const currentWord =
+        typingWords[typingWordIndex];
+
+    if (!isDeleting) {
+
+        typingText.textContent =
+            currentWord.substring(
+                0,
+                typingCharIndex + 1
+            );
+
+        typingCharIndex++;
+
+        if (
+            typingCharIndex ===
+            currentWord.length
+        ) {
+
+            isDeleting = true;
+
+            setTimeout(
+                runTypingAnimation,
+                pauseAfterTyping
+            );
+
+            return;
+        }
+
+        setTimeout(
+            runTypingAnimation,
+            typingSpeed
+        );
+
+        return;
+    }
+
+    typingText.textContent =
+        currentWord.substring(
+            0,
+            typingCharIndex - 1
+        );
+
+    typingCharIndex--;
+
+    if (typingCharIndex === 0) {
+
+        isDeleting = false;
+
+        typingWordIndex++;
+
+        if (
+            typingWordIndex >=
+            typingWords.length
+        ) {
+            typingWordIndex = 0;
+        }
+
+        setTimeout(
+            runTypingAnimation,
+            pauseAfterDeleting
+        );
+
+        return;
+    }
+
+    setTimeout(
+        runTypingAnimation,
+        deletingSpeed
+    );
+}
 
 document.addEventListener(
     "DOMContentLoaded",
     () => {
-
         setTimeout(
             runTypingAnimation,
             500
         );
-
     }
 );
