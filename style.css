@@ -1,6 +1,6 @@
 /* =========================================================
    YUVARAJAN J — PORTFOLIO
-   MAIN STYLESHEET
+   PREMIUM BLACK / WHITE DESIGN
 ========================================================= */
 
 
@@ -20,20 +20,22 @@ html {
 
 body {
     font-family: "Inter", sans-serif;
+
     background:
         radial-gradient(
-            circle at 15% 20%,
-            rgba(75, 100, 220, 0.08),
+            circle at 15% 15%,
+            rgba(255, 255, 255, 0.025),
             transparent 30%
         ),
         radial-gradient(
-            circle at 85% 70%,
-            rgba(120, 80, 220, 0.06),
+            circle at 85% 75%,
+            rgba(255, 255, 255, 0.018),
             transparent 30%
         ),
-        #0b0e13;
+        #050505;
 
-    color: #f5f7ff;
+    color: #f5f5f5;
+
     line-height: 1.6;
 
     overflow-x: hidden;
@@ -56,8 +58,8 @@ textarea {
 }
 
 ::selection {
-    background: rgba(100, 130, 255, 0.25);
-    color: #fff;
+    background: #ffffff;
+    color: #000000;
 }
 
 
@@ -76,25 +78,21 @@ textarea {
 ========================================================= */
 
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 7px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #080808;
+    background: #050505;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(
-        180deg,
-        #5f8cff,
-        #7d67e8
-    );
+    background: #333;
 
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #6585ff;
+    background: #555;
 }
 
 
@@ -104,31 +102,38 @@ textarea {
 
 .navbar {
     position: sticky;
+
     top: 0;
 
     z-index: 1000;
 
     width: 100%;
 
-    background: rgba(11, 14, 19, 0.88);
+    background: rgba(5, 5, 5, 0.88);
 
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(18px);
 
-    border-bottom:
-        1px solid
-        rgba(255, 255, 255, 0.06);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid #171717;
 }
 
 .nav-container {
     min-height: 70px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 20px;
 }
+
+
+/* =========================================================
+   LOGO
+========================================================= */
 
 .logo {
     font-size: 19px;
@@ -138,10 +143,12 @@ textarea {
     letter-spacing: 0.5px;
 
     white-space: nowrap;
+
+    color: #ffffff;
 }
 
 .logo span {
-    color: #6585ff;
+    color: #888;
 }
 
 
@@ -153,23 +160,23 @@ nav {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
-    gap: 22px;
+    gap: 24px;
 }
 
 nav a {
     position: relative;
 
-    color: #aeb4c2;
+    color: #858585;
 
     font-size: 12px;
 
     font-weight: 500;
 
     transition:
-        color 0.3s ease,
-        transform 0.3s ease;
+        color 0.3s ease;
 }
 
 nav a::after {
@@ -178,25 +185,24 @@ nav a::after {
     position: absolute;
 
     left: 50%;
-    bottom: -7px;
+
+    bottom: -8px;
 
     width: 0;
-    height: 2px;
 
-    background: #6585ff;
+    height: 1px;
 
-    box-shadow:
-        0 0 10px
-        rgba(100, 130, 255, 0.5);
+    background: #ffffff;
 
     transform: translateX(-50%);
 
-    transition: width 0.3s ease;
+    transition:
+        width 0.3s ease;
 }
 
 nav a:hover,
 nav a.active {
-    color: #6d8cff;
+    color: #ffffff;
 }
 
 nav a:hover::after,
@@ -210,17 +216,15 @@ nav a.active::after {
 ========================================================= */
 
 .resume-top {
-    border:
-        1px solid
-        #5e7fff;
+    padding: 8px 14px;
 
-    color: #7d9aff;
+    border: 1px solid #333;
 
-    padding: 8px 13px;
+    border-radius: 7px;
 
-    border-radius: 9px;
+    color: #ddd;
 
-    font-size: 12px;
+    font-size: 11px;
 
     font-weight: 600;
 
@@ -231,22 +235,16 @@ nav a.active::after {
 }
 
 .resume-top:hover {
-    background: #5e7fff;
+    background: #ffffff;
 
-    color: white;
+    border-color: #ffffff;
 
-    transform: translateY(-2px);
+    color: #000000;
 
-    box-shadow:
-        0 8px 25px
-        rgba(90, 115, 255, 0.2);
+    transform:
+        translateY(-2px);
 }
-   const typingWords = [
-    "Web Experiences",
-    "AI Applications",
-    "Developer Tools",
-    "Digital Solutions"
-];
+
 
 /* =========================================================
    HERO
@@ -260,7 +258,7 @@ nav a.active::after {
 
     align-items: center;
 
-    padding: 75px 0;
+    padding: 80px 0;
 }
 
 .hero-container {
@@ -274,136 +272,62 @@ nav a.active::after {
 }
 
 .hero-content {
-    max-width: 600px;
+    max-width: 620px;
 }
+
 
 /* =========================================================
-   ANIMATED TYPING EFFECT
+   HERO — ANIMATED TYPING
 ========================================================= */
 
-const typingText = document.getElementById("typingText");
+.typing-line {
+    display: flex;
 
-const typingWords = [
-    "Web Experiences",
-    "AI Applications",
-    "Developer Tools",
-    "Practical Solutions"
-];
+    align-items: center;
 
-let typingWordIndex = 0;
-let typingCharIndex = 0;
+    min-height: 28px;
 
-let isDeleting = false;
+    margin-bottom: 18px;
 
-const typingSpeed = 90;
-const deletingSpeed = 50;
-const pauseAfterTyping = 1800;
-const pauseAfterDeleting = 500;
+    font-size: 14px;
 
+    font-weight: 600;
 
-function runTypingAnimation() {
-
-    if (!typingText) return;
-
-    const currentWord =
-        typingWords[typingWordIndex];
-
-
-    /* TYPE */
-
-    if (!isDeleting) {
-
-        typingText.textContent =
-            currentWord.substring(
-                0,
-                typingCharIndex + 1
-            );
-
-        typingCharIndex++;
-
-
-        /* Finished typing */
-
-        if (
-            typingCharIndex ===
-            currentWord.length
-        ) {
-
-            isDeleting = true;
-
-            setTimeout(
-                runTypingAnimation,
-                pauseAfterTyping
-            );
-
-            return;
-        }
-
-        setTimeout(
-            runTypingAnimation,
-            typingSpeed
-        );
-
-        return;
-    }
-
-
-    /* DELETE */
-
-    typingText.textContent =
-        currentWord.substring(
-            0,
-            typingCharIndex - 1
-        );
-
-    typingCharIndex--;
-
-
-    /* Finished deleting */
-
-    if (typingCharIndex === 0) {
-
-        isDeleting = false;
-
-        typingWordIndex++;
-
-        if (
-            typingWordIndex >=
-            typingWords.length
-        ) {
-            typingWordIndex = 0;
-        }
-
-        setTimeout(
-            runTypingAnimation,
-            pauseAfterDeleting
-        );
-
-        return;
-    }
-
-
-    setTimeout(
-        runTypingAnimation,
-        deletingSpeed
-    );
+    letter-spacing: 0.2px;
 }
 
+.typing-prefix {
+    color: #777;
+}
 
-/* Start animation */
+#typingText {
+    color: #ffffff;
 
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+    font-weight: 700;
+}
 
-        setTimeout(
-            runTypingAnimation,
-            500
-        );
+.typing-cursor {
+    margin-left: 3px;
 
+    color: #ffffff;
+
+    animation:
+        cursorBlink
+        0.8s infinite;
+}
+
+@keyframes cursorBlink {
+
+    0%,
+    45% {
+        opacity: 1;
     }
-);
 
+    46%,
+    100% {
+        opacity: 0;
+    }
+}
 
 
 /* =========================================================
@@ -419,35 +343,35 @@ document.addEventListener(
 
     padding: 7px 13px;
 
-    border:
-        1px solid
-        rgba(105, 137, 255, 0.25);
+    border: 1px solid #292929;
 
-    background:
-        rgba(79, 110, 220, 0.08);
+    background: #0d0d0d;
 
     border-radius: 50px;
 
-    color: #8ba5ff;
+    color: #aaa;
 
-    font-size: 11px;
+    font-size: 10px;
 
     font-weight: 700;
 
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
+
+    text-transform: uppercase;
 }
 
 .badge span {
-    width: 7px;
-    height: 7px;
+    width: 6px;
 
-    background: #6b8cff;
+    height: 6px;
+
+    background: #ffffff;
 
     border-radius: 50%;
 
     box-shadow:
         0 0 10px
-        #6b8cff;
+        rgba(255, 255, 255, 0.7);
 }
 
 
@@ -459,35 +383,23 @@ document.addEventListener(
     margin-top: 20px;
 
     font-size:
-        clamp(42px, 5vw, 65px);
+        clamp(44px, 5vw, 66px);
 
-    line-height: 1.08;
+    line-height: 1.05;
 
     font-weight: 800;
 
-    letter-spacing: -2px;
+    letter-spacing: -2.8px;
+
+    color: #ffffff;
 }
 
 .hero h1 span {
-    background:
-        linear-gradient(
-            90deg,
-            #5f8cff,
-            #8a6cff
-        );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    color: transparent;
-
-    text-shadow:
-        0 0 25px
-        rgba(100, 130, 255, 0.25);
+    color: #ffffff;
 }
 
 .hero h1 b {
-    font-size: 38px;
+    font-size: 36px;
 }
 
 
@@ -500,11 +412,11 @@ document.addEventListener(
 
     margin-top: 22px;
 
-    color: #aeb5c3;
+    color: #8d8d8d;
 
-    font-size: 16px;
+    font-size: 15px;
 
-    line-height: 1.8;
+    line-height: 1.85;
 }
 
 
@@ -515,53 +427,50 @@ document.addEventListener(
 .social-icons {
     display: flex;
 
-    gap: 14px;
+    gap: 11px;
 
     margin-top: 25px;
 }
 
 .social-icons a {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+
+    height: 40px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
-    border-radius: 10px;
+    border: 1px solid #242424;
 
-    background: #151a23;
+    border-radius: 9px;
 
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.08);
+    background: #0c0c0c;
 
-    color: #d8dce6;
+    color: #aaa;
 
-    font-size: 20px;
+    font-size: 18px;
 
     transition:
         0.3s ease;
 }
 
 .social-icons a:hover {
+    background: #ffffff;
+
+    border-color: #ffffff;
+
+    color: #000000;
+
     transform:
-        translateY(-4px)
-        scale(1.05);
-
-    border-color: #6585ff;
-
-    color: #7f9aff;
-
-    box-shadow:
-        0 8px 25px
-        rgba(78, 108, 255, 0.18);
+        translateY(-4px);
 }
 
 
 /* =========================================================
-   BUTTONS
+   HERO BUTTONS
 ========================================================= */
 
 .hero-buttons {
@@ -569,24 +478,25 @@ document.addEventListener(
 
     flex-wrap: wrap;
 
-    gap: 14px;
+    gap: 11px;
 
-    margin-top: 28px;
+    margin-top: 27px;
 }
 
 .btn {
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
-    gap: 10px;
+    gap: 9px;
 
-    padding: 12px 19px;
+    padding: 11px 18px;
 
-    border-radius: 9px;
+    border-radius: 8px;
 
-    font-size: 13px;
+    font-size: 12px;
 
     font-weight: 600;
 
@@ -595,41 +505,34 @@ document.addEventListener(
 }
 
 .primary-btn {
-    background:
-        linear-gradient(
-            135deg,
-            #5d83ff,
-            #8169e8
-        );
+    background: #ffffff;
 
-    color: white;
+    color: #000000;
 
-    box-shadow:
-        0 8px 25px
-        rgba(90, 115, 255, 0.18);
+    border: 1px solid #ffffff;
 }
 
 .primary-btn:hover {
+    background: #dcdcdc;
+
     transform:
         translateY(-3px);
-
-    box-shadow:
-        0 12px 30px
-        rgba(90, 115, 255, 0.28);
 }
 
 .secondary-btn {
-    border:
-        1px solid
-        #555e6d;
+    background: transparent;
 
-    color: #e4e7ee;
+    border: 1px solid #333;
+
+    color: #ddd;
 }
 
 .secondary-btn:hover {
-    border-color: #738fff;
+    background: #151515;
 
-    color: #829cff;
+    border-color: #666;
+
+    color: #ffffff;
 
     transform:
         translateY(-3px);
@@ -644,11 +547,13 @@ document.addEventListener(
     position: relative;
 
     width: 330px;
+
     height: 330px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     flex-shrink: 0;
@@ -657,14 +562,15 @@ document.addEventListener(
 .profile-glow {
     position: absolute;
 
-    width: 300px;
-    height: 300px;
+    width: 290px;
 
-    background: #526dff;
+    height: 290px;
 
-    filter: blur(110px);
+    background: #ffffff;
 
-    opacity: 0.18;
+    filter: blur(120px);
+
+    opacity: 0.055;
 
     border-radius: 50%;
 }
@@ -673,22 +579,24 @@ document.addEventListener(
     position: relative;
 
     width: 270px;
+
     height: 270px;
 
-    padding: 4px;
+    padding: 3px;
 
     border-radius: 50%;
 
     background:
         linear-gradient(
             135deg,
-            #557aff,
-            #8369ef
+            #777,
+            #222,
+            #777
         );
 
     box-shadow:
         0 0 50px
-        rgba(82, 112, 255, 0.2);
+        rgba(255, 255, 255, 0.06);
 
     animation:
         profileFloat
@@ -697,15 +605,14 @@ document.addEventListener(
 
 .profile-circle img {
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
 
     border-radius: 50%;
 
-    border:
-        5px solid
-        #11151c;
+    border: 5px solid #080808;
 
     transition:
         filter 0.4s ease;
@@ -773,13 +680,11 @@ document.addEventListener(
 
     padding: 45px;
 
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.07);
+    background: #0b0b0b;
 
-    background: #10141b;
+    border: 1px solid #1c1c1c;
 
-    border-radius: 18px;
+    border-radius: 16px;
 
     text-align: center;
 
@@ -788,37 +693,34 @@ document.addEventListener(
 }
 
 .section-card:hover {
-    border-color:
-        rgba(102, 132, 255, 0.35);
+    border-color: #333;
 
     box-shadow:
-        0 15px 40px
-        rgba(0, 0, 0, 0.25);
+        0 20px 50px
+        rgba(0, 0, 0, 0.35);
 }
 
 .section-title h2 {
     font-size: 15px;
 
     letter-spacing: 2px;
+
+    color: #ffffff;
 }
 
 .section-title span {
     display: block;
 
-    width: 35px;
-    height: 3px;
+    width: 32px;
+
+    height: 2px;
 
     margin:
         10px auto 22px;
 
     border-radius: 20px;
 
-    background:
-        linear-gradient(
-            90deg,
-            #5e85ff,
-            #876bf0
-        );
+    background: #ffffff;
 }
 
 .section-card p {
@@ -826,9 +728,9 @@ document.addEventListener(
 
     margin: auto;
 
-    color: #aeb5c3;
+    color: #8d8d8d;
 
-    font-size: 15px;
+    font-size: 14px;
 }
 
 
@@ -841,55 +743,38 @@ document.addEventListener(
 }
 
 .section-heading span {
-    color: #6d8cff;
+    color: #777;
 
-    font-size: 11px;
+    font-size: 10px;
 
     font-weight: 700;
 
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
 }
 
 .section-heading h2 {
-    margin-top: 5px;
+    margin-top: 7px;
 
     font-size: 32px;
 
-    letter-spacing: -1px;
+    font-weight: 700;
+
+    letter-spacing: -1.2px;
+
+    color: #ffffff;
 }
 
 
 /* =========================================================
-   GITHUB CONTRIBUTIONS — BLACK PREMIUM STYLE
+   GITHUB CONTRIBUTIONS
 ========================================================= */
 
 .github-section {
     padding-top: 70px;
+
     padding-bottom: 80px;
-}
-
-
-/* =========================================================
-   SECTION HEADING
-========================================================= */
-
-.github-section .section-heading span {
-    color: #888;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-}
-
-.github-section .section-heading h2 {
-    margin-top: 8px;
-
-    color: #ffffff;
-
-    font-size: 34px;
-    font-weight: 700;
-
-    letter-spacing: -1.2px;
 }
 
 
@@ -911,7 +796,8 @@ document.addEventListener(
     border-radius: 16px;
 
     box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.45);
+        0 20px 50px
+        rgba(0, 0, 0, 0.45);
 
     transition:
         transform 0.3s ease,
@@ -919,27 +805,17 @@ document.addEventListener(
         box-shadow 0.3s ease;
 }
 
-.github-contribution-card:hover {
-    transform: translateY(-3px);
-
-    border-color: #3a3a3a;
-
-    box-shadow:
-        0 25px 60px rgba(0, 0, 0, 0.6);
-}
-
-
-/* Very subtle top highlight */
-
 .github-contribution-card::before {
     content: "";
 
     position: absolute;
 
     top: 0;
+
     left: 8%;
 
     width: 84%;
+
     height: 1px;
 
     background:
@@ -951,6 +827,17 @@ document.addEventListener(
         );
 
     opacity: 0.7;
+}
+
+.github-contribution-card:hover {
+    transform:
+        translateY(-3px);
+
+    border-color: #3a3a3a;
+
+    box-shadow:
+        0 25px 60px
+        rgba(0, 0, 0, 0.6);
 }
 
 
@@ -976,7 +863,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   TITLE
+   GITHUB TITLE
 ========================================================= */
 
 .github-contribution-title {
@@ -989,11 +876,13 @@ document.addEventListener(
 
 .github-contribution-title > i {
     width: 46px;
+
     height: 46px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     border-radius: 11px;
@@ -1005,10 +894,6 @@ document.addEventListener(
     color: #ffffff;
 
     font-size: 22px;
-
-    box-shadow:
-        inset 0 0 15px
-        rgba(255, 255, 255, 0.02);
 
     transition:
         0.3s ease;
@@ -1032,8 +917,6 @@ document.addEventListener(
 
     font-weight: 650;
 
-    letter-spacing: -0.2px;
-
     line-height: 1.3;
 }
 
@@ -1043,15 +926,11 @@ document.addEventListener(
     color: #777;
 
     font-size: 11px;
-
-    font-weight: 400;
-
-    letter-spacing: 0.2px;
 }
 
 
 /* =========================================================
-   CONTRIBUTION COUNT
+   GITHUB COUNT
 ========================================================= */
 
 .github-contribution-count {
@@ -1078,13 +957,11 @@ document.addEventListener(
     color: #777;
 
     font-size: 11px;
-
-    font-weight: 400;
 }
 
 
 /* =========================================================
-   GRAPH CONTAINER
+   GITHUB GRAPH
 ========================================================= */
 
 .github-graph-wrapper {
@@ -1131,7 +1008,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   CONTRIBUTION IMAGE
+   GITHUB IMAGE
 ========================================================= */
 
 .github-contribution-image {
@@ -1190,8 +1067,6 @@ document.addEventListener(
     color: #666;
 
     font-size: 11px;
-
-    letter-spacing: 0.1px;
 }
 
 .github-contribution-footer > span i {
@@ -1241,105 +1116,6 @@ document.addEventListener(
 
 
 /* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 760px) {
-
-    .github-section {
-        padding-top: 55px;
-        padding-bottom: 60px;
-    }
-
-    .github-section .section-heading h2 {
-        font-size: 28px;
-
-        letter-spacing: -0.8px;
-    }
-
-    .github-contribution-card {
-        padding: 18px;
-
-        border-radius: 14px;
-    }
-
-    .github-contribution-header {
-        align-items: flex-start;
-
-        flex-direction: column;
-
-        margin-bottom: 18px;
-    }
-
-    .github-contribution-title > i {
-        width: 43px;
-        height: 43px;
-
-        font-size: 20px;
-    }
-
-    .github-contribution-title h3 {
-        font-size: 15px;
-    }
-
-    .github-contribution-count {
-        margin-left: 56px;
-    }
-
-    .github-contribution-count strong {
-        font-size: 24px;
-    }
-
-    .github-graph-wrapper {
-        padding: 12px;
-
-        border-radius: 9px;
-    }
-
-    .github-contribution-image {
-        min-width: 700px;
-    }
-
-    .github-contribution-footer {
-        flex-direction: column;
-
-        align-items: stretch;
-    }
-
-    .github-profile-btn {
-        justify-content: center;
-    }
-}
-
-
-/* =========================================================
-   SMALL PHONES
-========================================================= */
-
-@media (max-width: 480px) {
-
-    .github-contribution-card {
-        padding: 15px;
-    }
-
-    .github-contribution-title {
-        gap: 11px;
-    }
-
-    .github-contribution-count {
-        margin-left: 54px;
-    }
-
-    .github-graph-wrapper {
-        padding: 9px;
-    }
-
-    .github-contribution-image {
-        min-width: 650px;
-    }
-}
-
-/* =========================================================
    SKILLS
 ========================================================= */
 
@@ -1361,13 +1137,11 @@ document.addEventListener(
 
     text-align: center;
 
-    background: #10141b;
+    background: #0b0b0b;
 
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.07);
+    border: 1px solid #1d1d1d;
 
-    border-radius: 13px;
+    border-radius: 12px;
 
     transition:
         0.3s ease;
@@ -1377,42 +1151,13 @@ document.addEventListener(
     transform:
         translateY(-5px);
 
-    border-color:
-        rgba(102, 132, 255, 0.5);
+    border-color: #3a3a3a;
 
-    background: #131923;
+    background: #101010;
 
     box-shadow:
         0 15px 40px
-        rgba(0, 0, 0, 0.25);
-}
-
-.skill-card::before {
-    content: "";
-
-    position: absolute;
-
-    top: -80px;
-    left: 50%;
-
-    width: 180px;
-    height: 100px;
-
-    transform:
-        translateX(-50%);
-
-    background: #6685ff;
-
-    filter: blur(70px);
-
-    opacity: 0;
-
-    transition:
-        opacity 0.4s ease;
-}
-
-.skill-card:hover::before {
-    opacity: 0.18;
+        rgba(0, 0, 0, 0.35);
 }
 
 .skill-card i {
@@ -1420,11 +1165,21 @@ document.addEventListener(
 
     z-index: 1;
 
-    font-size: 27px;
+    font-size: 26px;
 
-    color: #7390ff;
+    color: #d0d0d0;
 
     margin-bottom: 10px;
+
+    transition:
+        0.3s ease;
+}
+
+.skill-card:hover i {
+    color: #ffffff;
+
+    transform:
+        translateY(-2px);
 }
 
 .skill-card h3 {
@@ -1433,6 +1188,8 @@ document.addEventListener(
     z-index: 1;
 
     font-size: 14px;
+
+    color: #eee;
 }
 
 .skill-card p {
@@ -1444,7 +1201,7 @@ document.addEventListener(
 
     font-size: 11px;
 
-    color: #7f8795;
+    color: #707070;
 }
 
 
@@ -1468,13 +1225,11 @@ document.addEventListener(
 
     padding: 25px;
 
-    background: #10141b;
+    background: #0b0b0b;
 
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.07);
+    border: 1px solid #1d1d1d;
 
-    border-radius: 15px;
+    border-radius: 14px;
 
     transition:
         0.3s ease;
@@ -1484,60 +1239,33 @@ document.addEventListener(
     transform:
         translateY(-6px);
 
-    border-color:
-        rgba(104, 133, 255, 0.4);
+    border-color: #3a3a3a;
 
-    background:
-        rgba(20, 25, 35, 0.95);
+    background: #101010;
 
     box-shadow:
-        0 15px 40px
-        rgba(0, 0, 0, 0.25);
-}
-
-.project-card::before {
-    content: "";
-
-    position: absolute;
-
-    top: -80px;
-    left: 50%;
-
-    width: 180px;
-    height: 100px;
-
-    transform:
-        translateX(-50%);
-
-    background: #6685ff;
-
-    filter: blur(70px);
-
-    opacity: 0;
-
-    transition:
-        opacity 0.4s ease;
-}
-
-.project-card:hover::before {
-    opacity: 0.18;
+        0 18px 45px
+        rgba(0, 0, 0, 0.4);
 }
 
 .project-icon {
     width: 43px;
+
     height: 43px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
-    border-radius: 10px;
+    border-radius: 9px;
 
-    background:
-        rgba(91, 119, 255, 0.12);
+    background: #151515;
 
-    color: #7b96ff;
+    border: 1px solid #252525;
+
+    color: #ddd;
 
     font-size: 18px;
 
@@ -1546,12 +1274,14 @@ document.addEventListener(
 
 .project-card h3 {
     font-size: 18px;
+
+    color: #ffffff;
 }
 
 .project-card p {
     margin-top: 10px;
 
-    color: #9da5b4;
+    color: #858585;
 
     font-size: 13px;
 
@@ -1571,11 +1301,13 @@ document.addEventListener(
 .project-tags span {
     padding: 5px 9px;
 
-    border-radius: 6px;
+    border: 1px solid #242424;
 
-    background: #181d26;
+    border-radius: 5px;
 
-    color: #9ca9c0;
+    background: #111;
+
+    color: #888;
 
     font-size: 10px;
 }
@@ -1589,7 +1321,7 @@ document.addEventListener(
 
     margin-top: 20px;
 
-    color: #7692ff;
+    color: #bbb;
 
     font-size: 12px;
 
@@ -1600,7 +1332,7 @@ document.addEventListener(
 }
 
 .project-link:hover {
-    color: #a0b2ff;
+    color: #ffffff;
 
     transform:
         translateX(3px);
@@ -1623,26 +1355,24 @@ document.addEventListener(
     background:
         radial-gradient(
             circle at center,
-            rgba(77, 103, 220, 0.14),
+            rgba(255, 255, 255, 0.035),
             transparent 60%
         ),
-        #10141b;
+        #0b0b0b;
 
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.07);
+    border: 1px solid #1d1d1d;
 
-    border-radius: 18px;
+    border-radius: 16px;
 }
 
 .contact-card > span {
-    color: #718dff;
+    color: #777;
 
-    font-size: 11px;
+    font-size: 10px;
 
     font-weight: 700;
 
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 }
 
 .contact-card h2 {
@@ -1652,10 +1382,12 @@ document.addEventListener(
         clamp(30px, 4vw, 45px);
 
     letter-spacing: -1.5px;
+
+    color: #ffffff;
 }
 
 .contact-card h2 span {
-    color: #718cff;
+    color: #aaa;
 }
 
 .contact-card p {
@@ -1663,7 +1395,7 @@ document.addEventListener(
 
     margin: 15px auto 25px;
 
-    color: #9da5b4;
+    color: #808080;
 
     font-size: 14px;
 }
@@ -1676,9 +1408,7 @@ document.addEventListener(
 footer {
     padding: 25px 0;
 
-    border-top:
-        1px solid
-        rgba(255, 255, 255, 0.06);
+    border-top: 1px solid #171717;
 }
 
 .footer-container {
@@ -1690,7 +1420,7 @@ footer {
 }
 
 footer p {
-    color: #707887;
+    color: #606060;
 
     font-size: 11px;
 }
@@ -1702,7 +1432,7 @@ footer p {
 }
 
 .footer-socials a {
-    color: #777f8d;
+    color: #666;
 
     font-size: 15px;
 
@@ -1711,7 +1441,7 @@ footer p {
 }
 
 .footer-socials a:hover {
-    color: #7894ff;
+    color: #ffffff;
 
     transform:
         translateY(-3px);
@@ -1730,19 +1460,19 @@ footer p {
     background:
         radial-gradient(
             circle at center top,
-            rgba(76, 103, 220, 0.13),
+            rgba(255, 255, 255, 0.035),
             transparent 50%
         );
 }
 
 .page-header > span {
-    color: #718dff;
+    color: #777;
 
-    font-size: 11px;
+    font-size: 10px;
 
     font-weight: 700;
 
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 }
 
 .page-header h1 {
@@ -1754,20 +1484,12 @@ footer p {
     line-height: 1.1;
 
     letter-spacing: -2px;
+
+    color: #ffffff;
 }
 
 .page-header h1 strong {
-    background:
-        linear-gradient(
-            90deg,
-            #5f8cff,
-            #8a6cff
-        );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    color: transparent;
+    color: #ffffff;
 }
 
 .page-header p {
@@ -1775,7 +1497,7 @@ footer p {
 
     margin: 18px auto 0;
 
-    color: #9da5b4;
+    color: #858585;
 
     font-size: 15px;
 }
@@ -1805,13 +1527,11 @@ footer p {
 
     padding: 25px;
 
-    background: #10141b;
+    background: #0b0b0b;
 
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.07);
+    border: 1px solid #1d1d1d;
 
-    border-radius: 15px;
+    border-radius: 14px;
 
     transition:
         0.3s ease;
@@ -1821,43 +1541,47 @@ footer p {
     transform:
         translateY(-5px);
 
-    border-color:
-        rgba(104, 133, 255, 0.4);
+    border-color: #3a3a3a;
 
     box-shadow:
         0 15px 40px
-        rgba(0, 0, 0, 0.25);
+        rgba(0, 0, 0, 0.35);
 }
 
 .achievement-icon {
     width: 45px;
+
     height: 45px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     flex-shrink: 0;
 
-    border-radius: 11px;
+    border-radius: 10px;
 
-    background:
-        rgba(91, 119, 255, 0.12);
+    background: #151515;
 
-    color: #7b96ff;
+    border: 1px solid #252525;
+
+    color: #ddd;
 
     font-size: 18px;
 }
 
 .achievement-card h3 {
     font-size: 15px;
+
+    color: #eee;
 }
 
 .achievement-card p {
     margin-top: 7px;
 
-    color: #929baa;
+    color: #808080;
 
     font-size: 12px;
 
@@ -1869,7 +1593,7 @@ footer p {
 
     margin-top: 10px;
 
-    color: #718dff;
+    color: #aaa;
 
     font-size: 10px;
 
@@ -1883,7 +1607,7 @@ footer p {
 
 .certificates-section {
     background:
-        rgba(255, 255, 255, 0.008);
+        rgba(255, 255, 255, 0.006);
 }
 
 .certificate-grid {
@@ -1898,13 +1622,11 @@ footer p {
 .certificate-card {
     padding: 25px;
 
-    background: #10141b;
+    background: #0b0b0b;
 
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.07);
+    border: 1px solid #1d1d1d;
 
-    border-radius: 15px;
+    border-radius: 14px;
 
     transition:
         0.3s ease;
@@ -1914,12 +1636,11 @@ footer p {
     transform:
         translateY(-5px);
 
-    border-color:
-        rgba(104, 133, 255, 0.4);
+    border-color: #3a3a3a;
 
     box-shadow:
         0 15px 40px
-        rgba(0, 0, 0, 0.25);
+        rgba(0, 0, 0, 0.35);
 }
 
 .certificate-top {
@@ -1931,7 +1652,7 @@ footer p {
 }
 
 .certificate-top > span {
-    color: #718dff;
+    color: #777;
 
     font-size: 9px;
 
@@ -1942,19 +1663,22 @@ footer p {
 
 .certificate-icon {
     width: 43px;
+
     height: 43px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
-    border-radius: 10px;
+    border-radius: 9px;
 
-    background:
-        rgba(91, 119, 255, 0.12);
+    background: #151515;
 
-    color: #7b96ff;
+    border: 1px solid #252525;
+
+    color: #ddd;
 
     font-size: 17px;
 }
@@ -1963,12 +1687,14 @@ footer p {
     margin-top: 18px;
 
     font-size: 17px;
+
+    color: #eee;
 }
 
 .certificate-card p {
     margin-top: 8px;
 
-    color: #969eac;
+    color: #808080;
 
     font-size: 12px;
 
@@ -1986,27 +1712,28 @@ footer p {
 
     padding-top: 15px;
 
-    border-top:
-        1px solid
-        rgba(255, 255, 255, 0.06);
+    border-top: 1px solid #1c1c1c;
 }
 
 .certificate-bottom span {
-    color: #727b89;
+    color: #666;
 
     font-size: 10px;
 }
 
 .certificate-bottom a {
-    color: #7692ff;
+    color: #aaa;
 
     font-size: 11px;
 
     font-weight: 600;
+
+    transition:
+        0.3s ease;
 }
 
 .certificate-bottom a:hover {
-    color: #a0b2ff;
+    color: #ffffff;
 }
 
 
@@ -2023,13 +1750,11 @@ footer p {
 
     padding: 27px;
 
-    background: #10141b;
+    background: #0b0b0b;
 
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.07);
+    border: 1px solid #1d1d1d;
 
-    border-radius: 15px;
+    border-radius: 14px;
 
     transition:
         0.3s ease;
@@ -2039,8 +1764,7 @@ footer p {
     transform:
         translateY(-5px);
 
-    border-color:
-        rgba(104, 133, 255, 0.4);
+    border-color: #3a3a3a;
 }
 
 .education-card + .education-card {
@@ -2049,21 +1773,24 @@ footer p {
 
 .education-icon {
     width: 55px;
+
     height: 55px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     flex-shrink: 0;
 
-    border-radius: 13px;
+    border-radius: 12px;
 
-    background:
-        rgba(91, 119, 255, 0.12);
+    background: #151515;
 
-    color: #7b96ff;
+    border: 1px solid #252525;
+
+    color: #ddd;
 
     font-size: 21px;
 }
@@ -2073,7 +1800,7 @@ footer p {
 }
 
 .education-content > span {
-    color: #718dff;
+    color: #777;
 
     font-size: 9px;
 
@@ -2086,24 +1813,26 @@ footer p {
     margin-top: 5px;
 
     font-size: 17px;
+
+    color: #eee;
 }
 
 .education-content p {
     margin-top: 4px;
 
-    color: #b2b8c3;
+    color: #aaa;
 
     font-size: 13px;
 }
 
 .education-content small {
-    color: #777f8e;
+    color: #666;
 
     font-size: 11px;
 }
 
 .education-year {
-    color: #7b96ff;
+    color: #aaa;
 
     font-size: 11px;
 
@@ -2113,13 +1842,13 @@ footer p {
 .education-result {
     margin-top: 10px;
 
-    color: #7f8999;
+    color: #707070;
 
     font-size: 12px;
 }
 
 .education-result strong {
-    color: #7894ff;
+    color: #ddd;
 
     font-size: 13px;
 }
@@ -2132,7 +1861,7 @@ footer p {
 @media (max-width: 1050px) {
 
     nav {
-        gap: 14px;
+        gap: 16px;
     }
 
     nav a {
@@ -2140,16 +1869,18 @@ footer p {
     }
 
     .hero-container {
-        gap: 30px;
+        gap: 35px;
     }
 
     .profile-area {
         width: 280px;
+
         height: 280px;
     }
 
     .profile-circle {
         width: 230px;
+
         height: 230px;
     }
 
@@ -2182,11 +1913,6 @@ footer p {
         padding:
             0 5px;
     }
-
-    /*
-       The navigation is horizontally scrollable
-       on mobile so every menu item remains available.
-    */
 
     nav {
         display: flex;
@@ -2234,7 +1960,8 @@ footer p {
     /* HERO */
 
     .hero {
-        padding: 65px 0;
+        padding:
+            65px 0;
     }
 
     .hero-container {
@@ -2248,10 +1975,26 @@ footer p {
         max-width: 100%;
     }
 
+
+    /* TYPING */
+
+    .typing-line {
+        justify-content:
+            center;
+
+        min-height: 25px;
+
+        margin-bottom: 15px;
+
+        font-size: 13px;
+    }
+
+
     .hero h1 {
         font-size: 42px;
 
-        letter-spacing: -1.5px;
+        letter-spacing:
+            -1.8px;
     }
 
     .hero h1 b {
@@ -2272,11 +2015,13 @@ footer p {
 
     .profile-area {
         width: 250px;
+
         height: 250px;
     }
 
     .profile-circle {
         width: 210px;
+
         height: 210px;
     }
 
@@ -2301,11 +2046,18 @@ footer p {
 
     .github-section {
         padding-top: 55px;
+
         padding-bottom: 60px;
+    }
+
+    .github-section .section-heading h2 {
+        font-size: 28px;
     }
 
     .github-contribution-card {
         padding: 18px;
+
+        border-radius: 14px;
     }
 
     .github-contribution-header {
@@ -2319,9 +2071,10 @@ footer p {
 
     .github-contribution-title > i {
         width: 43px;
+
         height: 43px;
 
-        font-size: 21px;
+        font-size: 20px;
     }
 
     .github-contribution-title h3 {
@@ -2329,7 +2082,7 @@ footer p {
     }
 
     .github-contribution-count {
-        margin-left: 58px;
+        margin-left: 56px;
     }
 
     .github-contribution-count strong {
@@ -2337,7 +2090,9 @@ footer p {
     }
 
     .github-graph-wrapper {
-        padding: 14px;
+        padding: 12px;
+
+        border-radius: 9px;
     }
 
     .github-contribution-image {
@@ -2353,7 +2108,8 @@ footer p {
     }
 
     .github-profile-btn {
-        justify-content: center;
+        justify-content:
+            center;
     }
 
 
@@ -2447,13 +2203,19 @@ footer p {
         font-size: 36px;
     }
 
+    .typing-line {
+        font-size: 12px;
+    }
+
     .profile-area {
         width: 220px;
+
         height: 220px;
     }
 
     .profile-circle {
         width: 185px;
+
         height: 185px;
     }
 
@@ -2500,7 +2262,7 @@ footer p {
     }
 
     .github-graph-wrapper {
-        padding: 10px;
+        padding: 9px;
     }
 
     .github-contribution-image {
@@ -2539,7 +2301,7 @@ footer p {
 
 
 /* =========================================================
-   MOBILE BOTTOM NAV SUPPORT
+   MOBILE BOTTOM NAV
 ========================================================= */
 
 .mobile-nav {
@@ -2547,13 +2309,6 @@ footer p {
 }
 
 @media (max-width: 768px) {
-
-    /*
-       Your current portfolio uses the top
-       horizontally-scrollable navigation.
-       Therefore the duplicate bottom navigation
-       stays disabled.
-    */
 
     .mobile-nav {
         display: none !important;
