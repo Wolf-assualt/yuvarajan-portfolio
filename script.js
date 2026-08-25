@@ -342,11 +342,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // ==========================================================
-  // HERO TYPING ANIMATION
-  // ==========================================================
+// HERO TYPING ANIMATION
+// ==========================================================
 
-  const typingText =
-    document.getElementById("typingText");
+function initTypingAnimation() {
+
+  const typingText = document.getElementById("typingText");
+
+  if (!typingText) {
+    console.error(
+      "❌ Typing animation: #typingText element not found."
+    );
+    return;
+  }
 
   const typingWords = [
     "Web Experiences",
@@ -355,134 +363,103 @@ document.addEventListener("DOMContentLoaded", () => {
     "Practical Solutions"
   ];
 
-  let typingWordIndex = 0;
-  let typingCharIndex = 0;
-  let isDeleting = false;
+  let wordIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
 
-  const typingSpeed = 90;
-  const deletingSpeed = 50;
-  const pauseAfterTyping = 1800;
-  const pauseAfterDeleting = 500;
+  const typeSpeed = 90;
+  const deleteSpeed = 50;
+  const typingPause = 1800;
+  const deletingPause = 500;
 
+  function typeLoop() {
 
-  function runTypingAnimation() {
+    const currentWord = typingWords[wordIndex];
 
-    // Safety check
-    if (!typingText) {
-
-      console.error(
-        "Typing animation ERROR: #typingText was not found."
-      );
-
-      return;
-
-    }
-
-
-    const currentWord =
-      typingWords[typingWordIndex];
-
-
-    // ========================================================
+    // -------------------------------
     // TYPING
-    // ========================================================
+    // -------------------------------
 
-    if (!isDeleting) {
+    if (!deleting) {
+
+      charIndex++;
 
       typingText.textContent =
-        currentWord.substring(
-          0,
-          typingCharIndex + 1
-        );
+        currentWord.substring(0, charIndex);
 
-      typingCharIndex++;
+      if (charIndex >= currentWord.length) {
 
-
-      // Finished typing
-      if (
-        typingCharIndex >=
-        currentWord.length
-      ) {
-
-        typingCharIndex =
-          currentWord.length;
-
-        isDeleting = true;
+        deleting = true;
 
         setTimeout(
-          runTypingAnimation,
-          pauseAfterTyping
+          typeLoop,
+          typingPause
         );
 
         return;
-
       }
 
-
       setTimeout(
-        runTypingAnimation,
-        typingSpeed
+        typeLoop,
+        typeSpeed
       );
 
       return;
-
     }
 
 
-    // ========================================================
+    // -------------------------------
     // DELETING
-    // ========================================================
+    // -------------------------------
+
+    charIndex--;
 
     typingText.textContent =
-      currentWord.substring(
-        0,
-        typingCharIndex - 1
-      );
-
-    typingCharIndex--;
+      currentWord.substring(0, charIndex);
 
 
-    // Finished deleting
-    if (typingCharIndex <= 0) {
+    if (charIndex <= 0) {
 
-      typingCharIndex = 0;
+      charIndex = 0;
 
-      isDeleting = false;
+      deleting = false;
 
-      typingWordIndex =
-        (typingWordIndex + 1) %
-        typingWords.length;
-
+      wordIndex =
+        (wordIndex + 1) % typingWords.length;
 
       setTimeout(
-        runTypingAnimation,
-        pauseAfterDeleting
+        typeLoop,
+        deletingPause
       );
 
       return;
-
     }
 
-
     setTimeout(
-      runTypingAnimation,
-      deletingSpeed
+      typeLoop,
+      deleteSpeed
     );
-
   }
 
 
-  // Start typing animation
-  if (typingText) {
+  // Start clean
 
-    typingText.textContent = "";
+  typingText.textContent = "";
 
-    setTimeout(
-      runTypingAnimation,
-      500
-    );
+  setTimeout(
+    typeLoop,
+    500
+  );
 
-  }
+  console.log(
+    "✅ Typing animation started."
+  );
+}
+
+
+// Start typing animation
+
+initTypingAnimation();
 
 
   // ==========================================================
