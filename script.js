@@ -757,4 +757,321 @@ if (
         githubSection
     );
 
+  /* =========================================================
+   GITHUB CONTRIBUTION COUNTER
+   USER: Wolf-assualt
+========================================================= */
+
+(function () {
+
+    const counter =
+        document.getElementById(
+            "githubContributionCount"
+        );
+
+    const githubSection =
+        document.getElementById(
+            "github"
+        );
+
+
+    /* =====================================================
+       CHECK ELEMENTS
+    ===================================================== */
+
+    if (!counter || !githubSection) {
+
+        console.warn(
+            "GitHub contribution elements not found."
+        );
+
+        return;
+    }
+
+
+    const username =
+        "Wolf-assualt";
+
+
+    let animationStarted =
+        false;
+
+
+    /* =====================================================
+       FETCH GITHUB CONTRIBUTIONS
+    ===================================================== */
+
+    async function loadGithubContributions() {
+
+        try {
+
+            console.log(
+                "Loading GitHub contributions..."
+            );
+
+
+            const apiURL =
+                `https://github-contributions-api.jogruber.de/v4/${username}?y=all`;
+
+
+            const response =
+                await fetch(apiURL);
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    `GitHub API error: ${response.status}`
+                );
+
+            }
+
+
+            const data =
+                await response.json();
+
+
+            console.log(
+                "GitHub API response:",
+                data
+            );
+
+
+            /* =================================================
+               GET TOTAL DATA
+            ================================================= */
+
+            const yearlyTotals =
+                data.total;
+
+
+            if (
+                !yearlyTotals ||
+                typeof yearlyTotals !== "object"
+            ) {
+
+                throw new Error(
+                    "Contribution total data not found."
+                );
+
+            }
+
+
+            let total =
+                0;
+
+
+            /* =================================================
+               ADD ALL YEARS
+            ================================================= */
+
+            Object.keys(yearlyTotals).forEach(
+                function (year) {
+
+                    const value =
+                        Number(
+                            yearlyTotals[year]
+                        );
+
+
+                    if (
+                        Number.isFinite(value)
+                    ) {
+
+                        total += value;
+
+                    }
+
+                }
+            );
+
+
+            console.log(
+                "TOTAL CONTRIBUTIONS:",
+                total
+            );
+
+
+            /* =================================================
+               IF TOTAL IS VALID
+            ================================================= */
+
+            if (total > 0) {
+
+                animateGithubCounter(
+                    total
+                );
+
+            }
+
+            else {
+
+                console.warn(
+                    "GitHub returned 0 contributions."
+                );
+
+                counter.textContent =
+                    "0";
+
+            }
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "GitHub contribution loading failed:",
+                error
+            );
+
+
+            counter.textContent =
+                "—";
+
+        }
+
+    }
+
+
+    /* =====================================================
+       ANIMATED NUMBER
+    ===================================================== */
+
+    function animateGithubCounter(
+        target
+    ) {
+
+        if (animationStarted) {
+            return;
+        }
+
+
+        animationStarted =
+            true;
+
+
+        const duration =
+            2200;
+
+
+        const startTime =
+            performance.now();
+
+
+        function updateCounter(
+            currentTime
+        ) {
+
+            const elapsed =
+                currentTime -
+                startTime;
+
+
+            const progress =
+                Math.min(
+                    elapsed /
+                    duration,
+                    1
+                );
+
+
+            /* Smooth ease-out */
+
+            const easedProgress =
+                1 -
+                Math.pow(
+                    1 - progress,
+                    4
+                );
+
+
+            const currentNumber =
+                Math.floor(
+                    easedProgress *
+                    target
+                );
+
+
+            counter.textContent =
+                currentNumber.toLocaleString(
+                    "en-IN"
+                );
+
+
+            if (
+                progress < 1
+            ) {
+
+                requestAnimationFrame(
+                    updateCounter
+                );
+
+            }
+
+            else {
+
+                counter.textContent =
+                    target.toLocaleString(
+                        "en-IN"
+                    );
+
+            }
+
+        }
+
+
+        requestAnimationFrame(
+            updateCounter
+        );
+
+    }
+
+
+    /* =====================================================
+       WAIT UNTIL GITHUB SECTION IS VISIBLE
+    ===================================================== */
+
+    const githubObserver =
+        new IntersectionObserver(
+            function (entries) {
+
+                entries.forEach(
+                    function (entry) {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            console.log(
+                                "GitHub section visible."
+                            );
+
+
+                            loadGithubContributions();
+
+
+                            /*
+                                Only run once.
+                            */
+
+                            githubObserver.disconnect();
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.15
+            }
+        );
+
+
+    githubObserver.observe(
+        githubSection
+    );
+
+})();
+
 }
