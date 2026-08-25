@@ -246,6 +246,13 @@ nav a.active::after {
 /* =========================================================
    HERO
 ========================================================= */
+   const typingWords = [
+    "Web Experiences",
+    "AI Applications",
+    "Developer Tools",
+    "Digital Solutions"
+];
+
 
 .hero {
     min-height:
