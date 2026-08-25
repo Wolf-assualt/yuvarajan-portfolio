@@ -12,672 +12,748 @@ export const siteConfig = {
   resume: "Yuvarajan_J_Resume.pdf",
 
   // Password Generator Project
-  passwordProject: "https://github.com/Wolf-assualt/password-generator",
+  passwordProject:
+    "https://github.com/Wolf-assualt/password-generator",
 
   // Python Certificate
-  pythonCertificate: "YUVARAJAN-J-Participant-Certificate.pdf"
+  pythonCertificate:
+    "YUVARAJAN-J-Participant-Certificate.pdf"
 };
 
 
-// ========================================
-// LINK FUNCTION
-// ========================================
+// ============================================================
+// RUN EVERYTHING AFTER PAGE LOAD
+// ============================================================
 
-export function setLink(id, url) {
+document.addEventListener("DOMContentLoaded", () => {
 
-  const el = document.getElementById(id);
+  // ==========================================================
+  // LINK FUNCTION
+  // ==========================================================
 
-  if (!el) return;
+  function setLink(id, url) {
 
-  if (!url || url.startsWith("YOUR_")) {
+    const el = document.getElementById(id);
 
-    el.addEventListener("click", e => {
-      e.preventDefault();
+    if (!el) return;
 
-      alert(
-        "Add this link in script.js → siteConfig."
-      );
-    });
+    if (!url || url.startsWith("YOUR_")) {
 
-    return;
+      el.addEventListener("click", e => {
+        e.preventDefault();
+
+        alert(
+          "Add this link in script.js → siteConfig."
+        );
+      });
+
+      return;
+    }
+
+    el.href = url;
   }
 
-  el.href = url;
-}
 
+  // ==========================================================
+  // GITHUB LINKS
+  // ==========================================================
 
-// ========================================
-// GITHUB
-// ========================================
-
-["githubLink", "githubLink2"].forEach(id => {
-  setLink(id, siteConfig.github);
-});
-
-
-// ========================================
-// LINKEDIN
-// ========================================
-
-["linkedinLink", "linkedinLink2"].forEach(id => {
-  setLink(id, siteConfig.linkedin);
-});
-
-
-// ========================================
-// INSTAGRAM
-// ========================================
-
-["instagramLink", "instagramLink2"].forEach(id => {
-  setLink(id, siteConfig.instagram);
-});
-
-
-// ========================================
-// LEETCODE
-// ========================================
-
-["terminalLink", "terminalLink2"].forEach(id => {
-  setLink(id, siteConfig.terminal);
-});
-
-
-// ========================================
-// PASSWORD GENERATOR PROJECT
-// ========================================
-
-setLink(
-  "passwordProjectLink",
-  siteConfig.passwordProject
-);
-
-
-// ========================================
-// RESUME
-// ========================================
-
-setLink(
-  "resumeLink",
-  siteConfig.resume
-);
-
-
-// ========================================
-// PYTHON CERTIFICATE
-// ========================================
-
-setLink(
-  "pythonCertificateLink",
-  siteConfig.pythonCertificate
-);
-
-
-// ========================================
-// EMAIL
-// ========================================
-
-const emailLink = document.getElementById("emailLink");
-
-if (emailLink) {
-
-  emailLink.href =
-    "mailto:" + siteConfig.email;
-
-}
-
-
-// ========================================
-// CONTACT EMAIL TEXT
-// ========================================
-
-const emailText =
-  document.getElementById("contactEmailText");
-
-if (emailText) {
-
-  emailText.textContent =
-    siteConfig.email;
-
-  emailText.href =
-    "mailto:" + siteConfig.email;
-
-}
-
-
-// ========================================
-// PHONE
-// ========================================
-
-const phone =
-  document.getElementById("phoneLink");
-
-if (phone) {
-
-  phone.textContent =
-    siteConfig.phone;
-
-  phone.href =
-    "tel:" +
-    siteConfig.phone.replace(/\s/g, "");
-
-}
-
-
-// ========================================
-// MOBILE NAVIGATION
-// ========================================
-
-const nav =
-  document.querySelector(".nav nav");
-
-const menu =
-  document.querySelector(".hamburger");
-
-
-menu?.addEventListener("click", () => {
-
-  nav.classList.toggle("open");
-
-});
-
-
-document
-  .querySelectorAll(".nav nav a")
-  .forEach(a => {
-
-    a.addEventListener("click", () => {
-
-      nav.classList.remove("open");
-
-    });
-
+  ["githubLink", "githubLink2"].forEach(id => {
+    setLink(id, siteConfig.github);
   });
 
 
-// ========================================
-// SCROLL REVEAL
-// ========================================
+  // ==========================================================
+  // LINKEDIN LINKS
+  // ==========================================================
 
-const observer =
-  new IntersectionObserver(
+  ["linkedinLink", "linkedinLink2"].forEach(id => {
+    setLink(id, siteConfig.linkedin);
+  });
 
-    entries => {
 
-      entries.forEach(entry => {
+  // ==========================================================
+  // INSTAGRAM LINKS
+  // ==========================================================
 
-        if (entry.isIntersecting) {
+  ["instagramLink", "instagramLink2"].forEach(id => {
+    setLink(id, siteConfig.instagram);
+  });
 
-          entry.target.classList.add("visible");
 
-        }
+  // ==========================================================
+  // LEETCODE LINKS
+  // ==========================================================
+
+  ["terminalLink", "terminalLink2"].forEach(id => {
+    setLink(id, siteConfig.terminal);
+  });
+
+
+  // ==========================================================
+  // PASSWORD GENERATOR PROJECT
+  // ==========================================================
+
+  setLink(
+    "passwordProjectLink",
+    siteConfig.passwordProject
+  );
+
+
+  // ==========================================================
+  // RESUME
+  // ==========================================================
+
+  setLink(
+    "resumeLink",
+    siteConfig.resume
+  );
+
+
+  // ==========================================================
+  // PYTHON CERTIFICATE
+  // ==========================================================
+
+  setLink(
+    "pythonCertificateLink",
+    siteConfig.pythonCertificate
+  );
+
+
+  // ==========================================================
+  // EMAIL
+  // ==========================================================
+
+  const emailLink =
+    document.getElementById("emailLink");
+
+  if (emailLink) {
+
+    emailLink.href =
+      "mailto:" + siteConfig.email;
+
+  }
+
+
+  // ==========================================================
+  // CONTACT EMAIL TEXT
+  // ==========================================================
+
+  const emailText =
+    document.getElementById("contactEmailText");
+
+  if (emailText) {
+
+    emailText.textContent =
+      siteConfig.email;
+
+    emailText.href =
+      "mailto:" + siteConfig.email;
+
+  }
+
+
+  // ==========================================================
+  // PHONE
+  // ==========================================================
+
+  const phone =
+    document.getElementById("phoneLink");
+
+  if (phone) {
+
+    phone.textContent =
+      siteConfig.phone;
+
+    phone.href =
+      "tel:" +
+      siteConfig.phone.replace(/\s/g, "");
+
+  }
+
+
+  // ==========================================================
+  // MOBILE NAVIGATION
+  // ==========================================================
+
+  const nav =
+    document.querySelector(".nav nav");
+
+  const menu =
+    document.querySelector(".hamburger");
+
+  if (menu && nav) {
+
+    menu.addEventListener("click", () => {
+
+      nav.classList.toggle("open");
+
+    });
+
+  }
+
+
+  document
+    .querySelectorAll(".nav nav a")
+    .forEach(a => {
+
+      a.addEventListener("click", () => {
+
+        nav?.classList.remove("open");
 
       });
 
-    },
-
-    {
-      threshold: 0.12
-    }
-
-  );
+    });
 
 
-document
-  .querySelectorAll(".reveal")
-  .forEach(element => {
+  // ==========================================================
+  // SCROLL REVEAL
+  // ==========================================================
 
-    observer.observe(element);
+  const revealElements =
+    document.querySelectorAll(".reveal");
 
-  });
+  if ("IntersectionObserver" in window) {
+
+    const observer =
+      new IntersectionObserver(
+
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("visible");
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: 0.12
+        }
+
+      );
 
 
-// ========================================
-// CURSOR GLOW
-// ========================================
+    revealElements.forEach(element => {
 
-const glow =
-  document.querySelector(".cursor-glow");
-
-
-window.addEventListener(
-  "pointermove",
-  e => {
-
-    if (!glow) return;
-
-    glow.style.left =
-      e.clientX + "px";
-
-    glow.style.top =
-      e.clientY + "px";
-
-  }
-);
-
-
-// ========================================
-// ACTIVE NAVIGATION
-// ========================================
-
-document
-  .querySelectorAll(".nav nav a")
-  .forEach(a => {
-
-    a.addEventListener("click", () => {
-
-      document
-        .querySelectorAll(".nav nav a")
-        .forEach(x => {
-
-          x.classList.remove("active");
-
-        });
-
-      a.classList.add("active");
+      observer.observe(element);
 
     });
 
-  });
+  } else {
 
+    revealElements.forEach(element => {
 
-// ========================================
-// CONTACT FORM
-// ========================================
+      element.classList.add("visible");
 
-function sendMessage(e) {
-
-  e.preventDefault();
-
-  alert(
-    "Thanks! This demo form is ready for a backend/email service. Add Formspree, EmailJS or your own backend to receive messages."
-  );
-
-}
-
-
-// ========================================
-// MOUSE POSITION
-// ========================================
-
-document.addEventListener(
-  "mousemove",
-  function (e) {
-
-    document.documentElement.style.setProperty(
-      "--mouse-x",
-      e.clientX + "px"
-    );
-
-    document.documentElement.style.setProperty(
-      "--mouse-y",
-      e.clientY + "px"
-    );
+    });
 
   }
-);
 
-/* =========================================================
-   ANIMATED TYPING EFFECT
-========================================================= */
 
-const typingText =
+  // ==========================================================
+  // CURSOR GLOW
+  // ==========================================================
+
+  const glow =
+    document.querySelector(".cursor-glow");
+
+  window.addEventListener(
+    "pointermove",
+    e => {
+
+      if (!glow) return;
+
+      glow.style.left =
+        e.clientX + "px";
+
+      glow.style.top =
+        e.clientY + "px";
+
+    }
+  );
+
+
+  // ==========================================================
+  // ACTIVE NAVIGATION
+  // ==========================================================
+
+  document
+    .querySelectorAll(".nav nav a")
+    .forEach(a => {
+
+      a.addEventListener("click", () => {
+
+        document
+          .querySelectorAll(".nav nav a")
+          .forEach(x => {
+
+            x.classList.remove("active");
+
+          });
+
+        a.classList.add("active");
+
+      });
+
+    });
+
+
+  // ==========================================================
+  // CONTACT FORM
+  // ==========================================================
+
+  window.sendMessage = function (e) {
+
+    e.preventDefault();
+
+    alert(
+      "Thanks! This demo form is ready for a backend/email service. Add Formspree, EmailJS or your own backend to receive messages."
+    );
+
+  };
+
+
+  // ==========================================================
+  // MOUSE POSITION
+  // ==========================================================
+
+  document.addEventListener(
+    "mousemove",
+    e => {
+
+      document.documentElement.style.setProperty(
+        "--mouse-x",
+        e.clientX + "px"
+      );
+
+      document.documentElement.style.setProperty(
+        "--mouse-y",
+        e.clientY + "px"
+      );
+
+    }
+  );
+
+
+  // ==========================================================
+  // HERO TYPING ANIMATION
+  // ==========================================================
+
+  const typingText =
     document.getElementById("typingText");
 
-const typingWords = [
+  const typingWords = [
     "Web Experiences",
     "AI Applications",
     "Developer Tools",
     "Practical Solutions"
-];
+  ];
 
-let typingWordIndex = 0;
-let typingCharIndex = 0;
-let isDeleting = false;
+  let typingWordIndex = 0;
+  let typingCharIndex = 0;
+  let isDeleting = false;
 
-const typingSpeed = 90;
-const deletingSpeed = 50;
-const pauseAfterTyping = 1800;
-const pauseAfterDeleting = 500;
+  const typingSpeed = 90;
+  const deletingSpeed = 50;
+  const pauseAfterTyping = 1800;
+  const pauseAfterDeleting = 500;
 
-function runTypingAnimation() {
 
-    if (!typingText) return;
+  function runTypingAnimation() {
+
+    // Safety check
+    if (!typingText) {
+
+      console.error(
+        "Typing animation ERROR: #typingText was not found."
+      );
+
+      return;
+
+    }
+
 
     const currentWord =
-        typingWords[typingWordIndex];
+      typingWords[typingWordIndex];
+
+
+    // ========================================================
+    // TYPING
+    // ========================================================
 
     if (!isDeleting) {
 
-        typingText.textContent =
-            currentWord.substring(
-                0,
-                typingCharIndex + 1
-            );
+      typingText.textContent =
+        currentWord.substring(
+          0,
+          typingCharIndex + 1
+        );
 
-        typingCharIndex++;
+      typingCharIndex++;
 
-        if (
-            typingCharIndex ===
-            currentWord.length
-        ) {
 
-            isDeleting = true;
+      // Finished typing
+      if (
+        typingCharIndex >=
+        currentWord.length
+      ) {
 
-            setTimeout(
-                runTypingAnimation,
-                pauseAfterTyping
-            );
+        typingCharIndex =
+          currentWord.length;
 
-            return;
-        }
+        isDeleting = true;
 
         setTimeout(
-            runTypingAnimation,
-            typingSpeed
+          runTypingAnimation,
+          pauseAfterTyping
         );
 
         return;
+
+      }
+
+
+      setTimeout(
+        runTypingAnimation,
+        typingSpeed
+      );
+
+      return;
+
     }
 
+
+    // ========================================================
+    // DELETING
+    // ========================================================
+
     typingText.textContent =
-        currentWord.substring(
-            0,
-            typingCharIndex - 1
-        );
+      currentWord.substring(
+        0,
+        typingCharIndex - 1
+      );
 
     typingCharIndex--;
 
-    if (typingCharIndex === 0) {
 
-        isDeleting = false;
+    // Finished deleting
+    if (typingCharIndex <= 0) {
 
-        typingWordIndex++;
+      typingCharIndex = 0;
 
-        if (
-            typingWordIndex >=
-            typingWords.length
-        ) {
-            typingWordIndex = 0;
-        }
+      isDeleting = false;
 
-        setTimeout(
-            runTypingAnimation,
-            pauseAfterDeleting
-        );
+      typingWordIndex =
+        (typingWordIndex + 1) %
+        typingWords.length;
 
-        return;
+
+      setTimeout(
+        runTypingAnimation,
+        pauseAfterDeleting
+      );
+
+      return;
+
     }
 
-    setTimeout(
-        runTypingAnimation,
-        deletingSpeed
-    );
-}
-
-if (typingText) {
 
     setTimeout(
-        runTypingAnimation,
-        500
+      runTypingAnimation,
+      deletingSpeed
     );
 
-}
+  }
 
 
-/* =========================================================
-   GITHUB CONTRIBUTION COUNTER
-   USER: Wolf-assualt
-========================================================= */
+  // Start typing animation
+  if (typingText) {
 
-(function () {
+    typingText.textContent = "";
 
-    const counter =
-        document.getElementById(
-            "githubContributionCount"
-        );
+    setTimeout(
+      runTypingAnimation,
+      500
+    );
 
-    const githubSection =
-        document.getElementById(
-            "github"
-        );
+  }
 
-    if (
-        !counter ||
-        !githubSection
-    ) {
-        return;
-    }
+
+  // ==========================================================
+  // GITHUB CONTRIBUTION COUNTER
+  // ==========================================================
+
+  const counter =
+    document.getElementById(
+      "githubContributionCount"
+    );
+
+  const githubSection =
+    document.getElementById(
+      "github"
+    );
+
+
+  if (counter && githubSection) {
 
     const username =
-        "Wolf-assualt";
+      "Wolf-assualt";
 
     let animationStarted = false;
 
 
-    /* =====================================================
-       LOAD GITHUB DATA
-    ===================================================== */
+    // ========================================================
+    // ANIMATE GITHUB NUMBER
+    // ========================================================
+
+    function animateGithubCounter(target) {
+
+      if (animationStarted) {
+        return;
+      }
+
+      animationStarted = true;
+
+
+      const duration = 2200;
+
+      const startTime =
+        performance.now();
+
+
+      function updateCounter(currentTime) {
+
+        const elapsed =
+          currentTime - startTime;
+
+
+        const progress =
+          Math.min(
+            elapsed / duration,
+            1
+          );
+
+
+        // Smooth ease-out
+        const eased =
+          1 -
+          Math.pow(
+            1 - progress,
+            4
+          );
+
+
+        const current =
+          Math.floor(
+            eased * target
+          );
+
+
+        counter.textContent =
+          current.toLocaleString("en-IN");
+
+
+        if (progress < 1) {
+
+          requestAnimationFrame(
+            updateCounter
+          );
+
+        } else {
+
+          counter.textContent =
+            target.toLocaleString("en-IN");
+
+        }
+
+      }
+
+
+      requestAnimationFrame(
+        updateCounter
+      );
+
+    }
+
+
+    // ========================================================
+    // LOAD GITHUB CONTRIBUTIONS
+    // ========================================================
 
     async function loadGithubContributions() {
 
-        try {
+      try {
 
-            console.log(
-                "Loading GitHub contributions..."
-            );
-
-            const apiURL =
-                `https://github-contributions-api.jogruber.de/v4/${username}?y=all`;
-
-            const response =
-                await fetch(apiURL);
-
-            if (!response.ok) {
-
-                throw new Error(
-                    `GitHub API error: ${response.status}`
-                );
-
-            }
-
-            const data =
-                await response.json();
-
-            console.log(
-                "GitHub contribution data:",
-                data
-            );
+        console.log(
+          "Loading GitHub contributions..."
+        );
 
 
-            /*
-             * The API returns:
-             *
-             * data.total
-             *
-             * containing yearly totals.
-             */
-
-            let total = 0;
-
-            if (
-                data.total &&
-                typeof data.total === "object"
-            ) {
-
-                Object.values(
-                    data.total
-                ).forEach(
-                    value => {
-
-                        const number =
-                            Number(value);
-
-                        if (
-                            Number.isFinite(
-                                number
-                            )
-                        ) {
-
-                            total += number;
-
-                        }
-
-                    }
-                );
-
-            }
+        const apiURL =
+          `https://github-contributions-api.jogruber.de/v4/${username}?y=all`;
 
 
-            console.log(
-                "Total GitHub contributions:",
-                total
-            );
+        const response =
+          await fetch(apiURL);
 
 
-            if (total > 0) {
+        if (!response.ok) {
 
-                animateGithubCounter(
-                    total
-                );
-
-            } else {
-
-                console.warn(
-                    "GitHub contribution total is 0."
-                );
-
-                counter.textContent =
-                    "0";
-            }
+          throw new Error(
+            `GitHub API error: ${response.status}`
+          );
 
         }
 
-        catch (error) {
 
-            console.error(
-                "GitHub contribution error:",
-                error
-            );
-
-            counter.textContent =
-                "—";
-
-        }
-
-    }
+        const data =
+          await response.json();
 
 
-    /* =====================================================
-       ANIMATE NUMBER
-    ===================================================== */
+        console.log(
+          "GitHub contribution data:",
+          data
+        );
 
-    function animateGithubCounter(
-        target
-    ) {
 
-        if (animationStarted) {
-            return;
-        }
+        let total = 0;
 
-        animationStarted = true;
 
-        const duration =
-            2200;
+        // ====================================================
+        // API TOTAL
+        // ====================================================
 
-        const startTime =
-            performance.now();
-
-        function updateCounter(
-            currentTime
+        if (
+          data.total &&
+          typeof data.total === "object"
         ) {
 
-            const elapsed =
-                currentTime -
-                startTime;
+          Object.values(
+            data.total
+          ).forEach(value => {
 
-            const progress =
-                Math.min(
-                    elapsed /
-                    duration,
-                    1
-                );
-
-            const eased =
-                1 -
-                Math.pow(
-                    1 - progress,
-                    4
-                );
-
-            const current =
-                Math.floor(
-                    eased *
-                    target
-                );
-
-            counter.textContent =
-                current.toLocaleString(
-                    "en-IN"
-                );
+            const number =
+              Number(value);
 
             if (
-                progress < 1
+              Number.isFinite(number)
             ) {
 
-                requestAnimationFrame(
-                    updateCounter
-                );
-
-            } else {
-
-                counter.textContent =
-                    target.toLocaleString(
-                        "en-IN"
-                    );
+              total += number;
 
             }
 
+          });
+
         }
 
-        requestAnimationFrame(
-            updateCounter
+
+        console.log(
+          "Total GitHub contributions:",
+          total
         );
+
+
+        // ====================================================
+        // ANIMATE
+        // ====================================================
+
+        if (total > 0) {
+
+          animateGithubCounter(total);
+
+        } else {
+
+          console.warn(
+            "GitHub contribution total is 0."
+          );
+
+          counter.textContent =
+            "0";
+
+        }
+
+      }
+
+      catch (error) {
+
+        console.error(
+          "GitHub contribution error:",
+          error
+        );
+
+        counter.textContent =
+          "—";
+
+      }
 
     }
 
 
-    /* =====================================================
-       START WHEN GITHUB SECTION IS VISIBLE
-    ===================================================== */
+    // ========================================================
+    // START GITHUB WHEN SECTION ENTERS VIEW
+    // ========================================================
 
-    const githubObserver =
+    if ("IntersectionObserver" in window) {
+
+      const githubObserver =
         new IntersectionObserver(
-            entries => {
 
-                entries.forEach(
-                    entry => {
+          entries => {
 
-                        if (
-                            entry.isIntersecting
-                        ) {
+            entries.forEach(entry => {
 
-                            loadGithubContributions();
+              if (
+                entry.isIntersecting
+              ) {
 
-                            githubObserver.disconnect();
+                loadGithubContributions();
 
-                        }
+                githubObserver.disconnect();
 
-                    }
-                );
+              }
 
-            },
-            {
-                threshold: 0.15
-            }
+            });
+
+          },
+
+          {
+            threshold: 0.15
+          }
+
         );
 
-    githubObserver.observe(
-        githubSection
-    );
 
-})();
+      githubObserver.observe(
+        githubSection
+      );
+
+    } else {
+
+      loadGithubContributions();
+
+    }
+
+  }
+
+
+  // ==========================================================
+  // DEBUG
+  // ==========================================================
+
+  console.log(
+    "Portfolio JavaScript loaded successfully."
+  );
+
+  console.log(
+    "Typing element:",
+    document.getElementById("typingText")
+  );
+
+});
